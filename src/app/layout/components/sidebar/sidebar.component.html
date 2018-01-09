@@ -25,6 +25,7 @@
             <a class="list-group-item" (click)="addExpandClass('pages')">
                 <span><i class="fa fa-plus"></i>&nbsp; {{ 'Menu' | translate }}</span>
             </a>
+            <!--
             <li class="nested" [class.expand]="showMenu === 'pages'">
                 <ul class="submenu">
                     <li>
@@ -39,11 +40,12 @@
                 </ul>
             </li>
         </div>
+        -->
         <a [routerLink]="['/blank-page']" [routerLinkActive]="['router-link-active']" class="list-group-item">
         <i class="fa fa-file-o"></i>&nbsp;{{ 'Blank Page' | translate }}
     </a>
         <a [routerLink]="['/mitarbeiter']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-users"></i>&nbsp;{{ 'Unsere Mitarbeiter' | translate }}
+            <i class="fa fa-users"></i>&nbsp;{{ 'Mitarbeiter' | translate }}
         </a>
         <a [routerLink]="['/dienstgrade']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-users"></i>&nbsp;{{ 'Dienstgrade' | translate }}
@@ -58,7 +60,7 @@
             <i class="fa fa-users"></i>&nbsp;{{ 'Fahrzeuge' | translate }}
         </a>
         <a [routerLink]="['/fahrzeugbezeichnung']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-users"></i>&nbsp;{{ 'Fahrzeugbezeichnung' | translate }}
+            <i class="fa fa-users"></i>&nbsp;{{ 'Bezeichnung' | translate }}
         </a>
         <a class="list-group-item more-themes" href="http://www.strapui.com/" >
             {{ 'More Theme' | translate }}
