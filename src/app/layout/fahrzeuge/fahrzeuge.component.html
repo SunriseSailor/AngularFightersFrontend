@@ -1,0 +1,46 @@
+<div [@routerTransition]>
+    <h1>Feuerwehrfahrzeuge</h1>
+    <div class="row" *ngIf="!selectedFireEngine">
+        <div class="col-md-12">
+            <a (click)="createFireEngine()">Neues Fahrzeug erstellen</a>
+        </div>
+        <div class="col-md-12">
+            <table class="table table-condensed" *ngIf="fireEngines.length > 0">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Modell</th>
+                    <th>Kennzeichen</th>
+                    <th>Leistung</th>
+                    <th>Baujahr</th>
+                    <th>Aktiv</th>
+                    <th>Bezeichnung</th>
+                    <th>Feuerwehr</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tr *ngFor="let f of fireEngines">
+                    <td>{{f.id}}</td>
+                    <td>{{f.model }}</td>
+                    <td>{{f.licensePlate }}</td>
+                    <td>{{f.performance }}</td>
+                    <td>{{f.buildYear}} </td>
+                    <td>{{f.active}} </td>
+                    <td>{{f.abbreviation.abbreviation}} </td>
+                    <td>{{f.fireBrigade.name}} </td>
+                    <td>
+                        <a (click)="select(f)">Select</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row" *ngIf="selectedFireEngine">
+        <div class="col-md-12">
+            <fahrzeug-detail [fireEngine]="selectedFireEngine"></fahrzeug-detail>
+        </div>
+        <div>
+            <a (click)="deselect()">Zurück zur Übersicht</a>
+        </div>
+    </div>
+</div>
