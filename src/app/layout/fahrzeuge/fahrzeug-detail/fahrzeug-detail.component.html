@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-md-12">
+        <h1>Fahrzeug Detailansicht</h1>
+        <div class="card" *ngIf="fireEngine">
+            <div class="header">
+                <h2 class="title">{{fireEngine.abbreviation.abbreviation}} {{fireEngine.fireBrigade.name}}</h2>
+            </div>
+            <div class="content">
+                <p>FahrzeugID.: #{{fireEngine.id}}</p>
+                <p>Baujahr: {{fireEngine.buildYear}}</p>
+                <p>{{fireEngine.model}} - {{fireEngine.licensePlate}}</p>
+                <p>
+                    <button
+                        class="btn btn-default"
+                        (click)="deleteDetail(fireEngine)">Löschen</button>
+                    <a class="btn btn-default"
+                       [routerLink]="['/fahrzeuge/fahrzeug-edit', fireEngine.id]">
+                        Bearbeiten
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <a class="btn btn-default"
+           [routerLink]="['/fahrzeuge']">
+            Zurück zur Übersicht
+        </a>
+    </div>
+</div>
+
+
+

@@ -8,6 +8,7 @@ export interface FireEngine {
     performance: string;
     buildYear: string;
     active: boolean;
-    fireBrigade: FireBrigade;
     abbreviation: FireEngineAbbreviation
+    fireBrigade: FireBrigade;
+
 }
