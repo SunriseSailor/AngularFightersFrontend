@@ -5,14 +5,15 @@ import {FireEngine} from "../../entities/fireEngine";
 import 'rxjs/add/operator/toPromise';
 import {FireBrigade} from "../../entities/fireBrigade";
 import {FireEngineAbbreviation} from "../../entities/fireEngineAbbreviation";
+import {Router} from "@angular/router";
 
 @Injectable()
 export class FireEngineService {
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private router: Router) {
     }
 
     findAll(): Promise<FireEngine[]> {
-        let url = 'http://localhost:8080/fireEngines?projection=all';
+        let url = 'http://localhost:8080/fireEngines?projection=all&size=100';
         let headers = new HttpHeaders().set('Accept', 'application/json');
         return this.http.get<Array<FireEngine>>(url, {headers}).toPromise().then(fireEngines => fireEngines['_embedded']['fireEngines'])
     }
@@ -29,7 +30,6 @@ export class FireEngineService {
         return this.http.get<Array<FireEngineAbbreviation>>(url, {headers}).toPromise().then(fireEngineAbbreviations => fireEngineAbbreviations['_embedded']['fireEngineAbbreviations'])
     }
 
-
     findById(id: string): Observable<FireEngine> {
         const url = 'http://localhost:8080/fireEngines/'+id+'?projection=all';
         const headers = new HttpHeaders()
@@ -39,40 +39,74 @@ export class FireEngineService {
 
     createFireEngine(fireEngine: FireEngine): Observable<FireEngine> {
         let url = 'http://localhost:8080/fireEngines';
-        let headers = new HttpHeaders().set('Accept', 'application/json');
+        let headers = new HttpHeaders().set('Accept', 'application/json').set('Content-Type', 'application/json');
         return this.http.post<FireEngine>(url, fireEngine, { headers });
     }
+
+    fullCreate(fireEngine: FireEngine) : void {
+        this.createFireEngine(fireEngine).subscribe(
+            fireEngineNew => {
+                let abbreviationId = fireEngine.abbreviation.id
+                let fireBrigadeId = fireEngine.fireBrigade.id
+                fireEngine = fireEngineNew;
+
+                fireEngine.abbreviation = {
+                                            id: abbreviationId,
+                                            abbreviation:"",
+                                            description:"",
+                                            operatingLife:""
+                                            };
+
+                fireEngine.fireBrigade = {
+                                            id: fireBrigadeId,
+                                            name:"",
+                                            postalCode:"",
+                                            postTown:"",
+                                            streetName:""
+                                        };
+                console.log(fireEngine.abbreviation.id)
+
+                console.log("Successfully created FireEngine.");
+                this.updateFireEngineAbbreviation(fireEngine).subscribe(
+                    abbreviation => {
+                        fireEngine.abbreviation = abbreviation;
+                        console.log("Abbreviation was added");
+                        this.updateFireEngineFireBrigade(fireEngine).subscribe(
+                            fireBrigade => {
+                                fireEngine.fireBrigade = fireBrigade;
+                                console.log("FireBrigade was added");
+                                this.router.navigate(['/fahrzeuge'])
+                            },
+                            err => {
+                                console.log("FireBrigade was not added" )
+                            }
+                        );
+
+                    },
+                    err => {
+                        console.log("Abbreviation was not added")
+                    }
+                );
+
+            },
+            err => {
+                console.log("Error creating FireEngine.")
+            }
+        );
+
+    }
+
+
 
     updateFireEngine(fireEngine: FireEngine): Observable<FireEngine> {
         let url = 'http://localhost:8080/fireEngines/'+fireEngine.id;
         let headers = new HttpHeaders().set('Accept', 'application/json');
-        this.updateFireEngineAbbreviation(fireEngine).subscribe(
-            abbreviation => {
-                fireEngine.abbreviation = abbreviation;
-                console.log("Abbreviation was changed");
-            },
-            err => {
-                console.log("Abbreviation was not changed")
-            }
-        );
         fireEngine.abbreviation = null;
-
-        this.updateFireEngineFireBrigade(fireEngine).subscribe(
-            fireBrigade => {
-                fireEngine.fireBrigade = fireBrigade;
-                console.log("FireBrigade was changed");
-            },
-            err => {
-                console.log("FireBrigade was not changed" )
-            }
-        );
-
         fireEngine.fireBrigade = null;
-
         return this.http.put<FireEngine>(url, fireEngine, { headers });
 
-        
     }
+
     updateFireEngineFireBrigade(fireEngine: FireEngine): Observable<FireBrigade> {
         let url = 'http://localhost:8080/fireEngines/'+fireEngine.id+'/fireBrigade';
         let headers = new HttpHeaders().set('Content-Type', 'text/uri-list');
@@ -85,6 +119,40 @@ export class FireEngineService {
         let headers = new HttpHeaders().set('Content-Type', 'text/uri-list');
         let changeUrl = 'http://localhost:8080/fireEngineAbbreviations/'+ fireEngine.abbreviation.id
         return this.http.put<FireEngineAbbreviation>(url, changeUrl, { headers });
+    }
+
+    fullUpdate(fireEngine:FireEngine):void {
+
+        this.updateFireEngineAbbreviation(fireEngine).subscribe(
+            abbreviation => {
+                fireEngine.abbreviation = abbreviation;
+                console.log("Abbreviation was changed");
+                this.updateFireEngineFireBrigade(fireEngine).subscribe(
+                    fireBrigade => {
+                        fireEngine.fireBrigade = fireBrigade;
+                        console.log("FireBrigade was changed");
+                        this.updateFireEngine(fireEngine).subscribe(
+                            fireEngineNew => {
+                                fireEngine = fireEngineNew;
+
+                                this.router.navigate(['/fahrzeuge'])
+                            },
+                            err => {
+                                console.log("FireEngine was not changed!")
+                            }
+                        );
+                    },
+                    err => {
+                        console.log("FireBrigade was not changed" )
+                    }
+                );
+
+            },
+            err => {
+                console.log("Abbreviation was not changed")
+            }
+        );
+
     }
 
 

@@ -4,6 +4,7 @@ import {FireEngineService} from "../fahrzeuge.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FireBrigade} from "../../../entities/fireBrigade";
 import {FireEngineAbbreviation} from "../../../entities/fireEngineAbbreviation";
+import {isUndefined} from "util";
 
 @Component({
   selector: 'fahrzeug-edit',
@@ -25,6 +26,7 @@ export class FahrzeugEditComponent implements OnInit {
       this.route.params.subscribe(
           params => {
               this.id = params['id'];
+              if(this.id != null) {
 
                   this.fireEngineService.findById(this.id).subscribe(
                       fireEngine => {
@@ -35,6 +37,31 @@ export class FahrzeugEditComponent implements OnInit {
                           this.errors = 'Fehler beim Laden';
                       }
                   );
+              }
+              else {
+                  this.fireEngine = {
+                      id: NaN,
+                      model:"",
+                      licensePlate:"",
+                      performance:"",
+                      buildYear:"",
+                      active:true,
+                      abbreviation:{
+                          id: NaN,
+                          abbreviation:"",
+                          description:"",
+                          operatingLife:""
+                      },
+                      fireBrigade:{
+                          id: NaN,
+                          name:"",
+                          postTown:"",
+                          postalCode:"",
+                          streetName:""
+                      }
+
+                  };
+              }
               this.fireEngineService.findAllFireBrigades()
                   .then(fireBrigades => this.fireBrigades = fireBrigades)
                   .catch(err=>console.log(err))
@@ -48,30 +75,14 @@ export class FahrzeugEditComponent implements OnInit {
   }
 
     update() {
-        this.fireEngineService.updateFireEngine(this.fireEngine).subscribe(
-            fireEngine => {
-                this.fireEngine = fireEngine;
-                this.errors = 'Saving was successful!';
-                this.router.navigate(['/fahrzeuge', { success: this.errors}])
-            },
-            err => {
-                this.errors = 'Error saving data';
-                console.log(this.errors)
-            }
-        );
-    }
+        this.fireEngineService.fullUpdate(this.fireEngine)
+  }
 
     create() {
-        this.fireEngineService.createFireEngine(this.fireEngine).subscribe(
-            fireEngine => {
-                this.fireEngine = fireEngine;
-                this.errors = 'Creating was successful!';
-                this.router.navigate(['/fahrzeuge', { success: this.errors}])
-            },
-            err => {
-                this.errors = 'Error saving data';
-            }
-        );
+        //console.log(this.fireEngine.abbreviation.id)
+        this.fireEngineService.fullCreate(this.fireEngine)
+
+
     }
 
 }

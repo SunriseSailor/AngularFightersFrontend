@@ -21,6 +21,7 @@ export class FahrzeugDetailComponent implements OnInit {
       this.fireEngineService.deleteFireEngine(this.fireEngine.id.toString()).subscribe(
           (ok) => {
              console.log('Successfully deleted Fire Engine ' + this.fireEngine.id);
+             this.router.navigate(['/fahrzeuge']);
           },
           (errResp) => {
               console.error('Error deleting Engine', errResp);

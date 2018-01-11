@@ -1,14 +1,14 @@
-<div class="card">
+<div class="card" *ngIf="fireEngine">
     <div class="header">
-        <h1 class="title" *ngIf="fireEngine">Fahrzeug Bearbeiten</h1>
-        <h1 class="title" *ngIf="!fireEngine">Neues Fahrzeug erstellen</h1>
+        <h1 class="title" *ngIf="fireEngine.id">Fahrzeug Bearbeiten</h1>
+        <h1 class="title" *ngIf="!fireEngine.id">Neues Fahrzeug erstellen</h1>
     </div>
     <div class="content">
         <form *ngIf="fireEngine">
 
-            <div class="form-group">
+            <div *ngIf="fireEngine.id" class="form-group">
                 <label>Id:</label>
-                <input [(ngModel)]="fireEngine.id" name="id" class="form-control">
+                <input [(ngModel)]="fireEngine.id" disabled name="id" class="form-control">
             </div>
 
             <div class="form-group">
@@ -49,7 +49,7 @@
 
             <div class="form-group">
                 <label>Feuerwehr</label>
-                <select [(ngModel)]="fireEngine.fireBrigade.id" name="fireBrigade" class="form-control">
+                <select [(ngModel)]="fireEngine.fireBrigade.id" name="fireBrigade" class="form-control" >
                     <option *ngFor="let f of fireBrigades" [value]="f.id" [selected]="f.id == fireEngine.fireBrigade.id">{{f.name}}</option>
                 </select>
             </div>
@@ -57,8 +57,8 @@
 
 
             <div *ngIf="errors" class="alert alert-danger">{{errors}}</div>
-            <button *ngIf="fireEngine" class="btn btn-default" (click)="update()">Bearbeiten</button>
-            <button *ngIf="!fireEngine" class="btn btn-default" (click)="create()">Bearbeiten</button>
+            <button *ngIf="fireEngine.id" class="btn btn-default" (click)="update()">Bearbeiten</button>
+            <button *ngIf="!fireEngine.id" class="btn btn-default" (click)="create()">Neu erstellen</button>
 
         </form>
     </div>
@@ -68,6 +68,7 @@
        [routerLink]="['/fahrzeuge']">
         Zurück zur Übersicht
     </a>
+    <pre>{{fireEngine | json}}</pre>
 </div>
 
 
