@@ -6,6 +6,6 @@ export interface FireFighter {
     surname: string;
     name: string;
     //rank: string;
-    //fireBrigade: FireBrigade;
+    fireBrigade: FireBrigade;
     //gender: string;
 }

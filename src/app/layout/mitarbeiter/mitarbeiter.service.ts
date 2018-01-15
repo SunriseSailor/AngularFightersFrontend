@@ -4,6 +4,7 @@ import {Observable} from "rxjs/Observable";
 import {FireFighter} from "../../entities/fireFighter";
 import 'rxjs/add/operator/toPromise';
 import {Router} from "@angular/router";
+import {FireBrigade} from "../../entities/fireBrigade";
 
 @Injectable()
 export class FireFighterService {
@@ -11,15 +12,15 @@ export class FireFighterService {
     }
 
     findAll(): Promise<FireFighter[]> {
-        let url = 'http://localhost:8080/fireFighters?projection=all&size=1000';
+        let url = 'http://localhost:8080/fireFighters?projection=all&size=200';
         let headers = new HttpHeaders().set('Accept', 'application/json');
         return this.http.get<Array<FireFighter>>(url, {headers}).toPromise().then(fireFighters => fireFighters['_embedded']['fireFighters'])
     }
 
-    findAllFireFighters(): Promise<FireFighter[]> {
-        let url = 'http://localhost:8080/fireFighters';
+    findAllFireBrigades(): Promise<FireBrigade[]> {
+        let url = 'http://localhost:8080/fireBrigades';
         let headers = new HttpHeaders().set('Accept', 'application/json');
-        return this.http.get<Array<FireFighter>>(url, {headers}).toPromise().then(fireFighters => fireFighters['_embedded']['fireFighters'])
+        return this.http.get<Array<FireBrigade>>(url, {headers}).toPromise().then(fireBrigades => fireBrigades['_embedded']['fireBrigades'])
     }
 
     findById(id: string): Observable<FireFighter> {
@@ -38,8 +39,16 @@ export class FireFighterService {
     updateFireFighter(fireFighter: FireFighter): Observable<FireFighter> {
         let url = 'http://localhost:8080/fireFighters/'+fireFighter.id;
         let headers = new HttpHeaders().set('Accept', 'application/json');
+        fireFighter.fireBrigade = null;
         return this.http.put<FireFighter>(url, fireFighter, { headers });
 
+    }
+
+    updateFireFighterFireBrigade(fireFighter: FireFighter): Observable<FireBrigade> {
+        let url = 'http://localhost:8080/fireFighters/'+fireFighter.id+'/fireBrigade';
+        let headers = new HttpHeaders().set('Content-Type', 'text/uri-list');
+        let changeUrl = 'http://localhost:8080/fireBrigades/'+ fireFighter.fireBrigade.id;
+        return this.http.put<FireBrigade>(url, changeUrl, { headers });
     }
 
     deleteFireFighter(id:string): Observable<FireFighter> {
