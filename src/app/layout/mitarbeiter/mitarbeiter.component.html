@@ -1,0 +1,42 @@
+<div [@routerTransition]>
+    <h1>Mitarbeiter</h1>
+    <div class="row">
+        <!-- <div class="col-md-12">
+            <a class="btn btn-default"
+               [routerLink]="['/mitarbeiter/mitarbeiter-edit']">
+                Neuen Mitarbeiter anlegen
+            </a>
+        </div> -->
+        <div class="col-md-12">
+            <table class="table table-condensed" *ngIf="fireFighters.length > 0">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Titel</th>
+                    <th>Vorname</th>
+                    <th>Nachname</th>
+                    <th>Rang</th>
+                    <th>Feuerwehr</th>
+                    <th>Geschlecht</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tr *ngFor="let f of fireFighters">
+                    <td>{{f.id}}</td>
+                    <td>{{f.title }}</td>
+                    <td>{{f.surname }}</td>
+                    <td>{{f.name }}</td>
+                    <td>{{f.rank}} </td>
+                    <td>{{f.fireBrigade.name}} </td>
+                    <td>{{f.gender}} </td>
+                    <td>
+                        <!--<a class="btn btn-default" (click)="select(f)"
+                           [routerLink]="['/mitarbeiter/mitarbeiter-detail', f.id ]">
+                            Auswählen
+                        </a>-->
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

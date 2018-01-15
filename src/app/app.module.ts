@@ -11,6 +11,8 @@ import { AuthGuard } from './shared';
 import {FireEngineService} from './layout/fahrzeuge/fahrzeuge.service';
 import {FormsModule} from '@angular/forms';
 import {FireBrigadeService} from './layout/feuerwehr/feuerwehr.service';
+import {FireFighterService} from "./layout/mitarbeiter/mitarbeiter.service";
+
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -36,7 +38,7 @@ export function createTranslateLoader(http: HttpClient) {
         AppRoutingModule
     ],
     declarations: [AppComponent],
-    providers: [AuthGuard, FireEngineService, FireBrigadeService],
+    providers: [AuthGuard, FireEngineService, FireBrigadeService, FireFighterService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
