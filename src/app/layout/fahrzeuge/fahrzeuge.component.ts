@@ -14,12 +14,18 @@ import { FireBrigade } from '../../entities/fireBrigade';
 export class FahrzeugeComponent implements OnInit {
 
     fireEngines: Array<FireEngine> = [];
+    fireBrigades: FireBrigade[];
+    fireBrigadeId: number;
     selectedFireEngine: FireEngine;
+    filtered: boolean = false;
 
     constructor(private fireEngineService: FireEngineService) {}
 
     ngOnInit() {
         this.showAllFireEngines();
+        this.fireEngineService.findAllFireBrigades()
+            .then(fireBrigades => this.fireBrigades = fireBrigades)
+            .catch(err=>console.log(err));
     }
 
    /* search(): void {
@@ -48,7 +54,17 @@ export class FahrzeugeComponent implements OnInit {
         this.fireEngineService.findAll()
             .then(fireEngines => this.fireEngines = fireEngines)
             .catch(err => console.log(err));
+        this.filtered = false;
     }
+
+    filterByFireBrigade(fireBrigadeId: number):void {
+        this.fireEngineService.findByFireBrigadeId(fireBrigadeId.toString())
+            .then(fireEngines => this.fireEngines = fireEngines)
+            .catch(err => console.log(err));
+        this.filtered = true;
+
+    }
+
 
 
 }

@@ -8,6 +8,18 @@
             </a>
         </div>
         <div class="col-md-12">
+            <form class="form-group">
+                <div class="form-group">
+                    <label>Filtern nach Feuerwehr:</label>
+                    <select [(ngModel)]="fireBrigadeId" name="fireBrigadeId" class="form-control">
+                        <option *ngFor="let f of fireBrigades" [value]="f.id" >{{f.name}}</option>
+                    </select>
+                </div>
+                <button class="btn btn-default" (click)="filterByFireBrigade(fireBrigadeId)">Filtern!</button>
+                <button *ngIf="filtered" class="btn btn-default" (click)="showAllFireEngines()">Filter aufheben</button>
+            </form>
+        </div>
+        <div class="col-md-12">
             <table class="table table-condensed" *ngIf="fireEngines.length > 0">
                 <thead>
                 <tr>

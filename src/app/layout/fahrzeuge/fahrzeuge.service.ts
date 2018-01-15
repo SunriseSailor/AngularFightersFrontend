@@ -5,7 +5,7 @@ import {FireEngine} from "../../entities/fireEngine";
 import 'rxjs/add/operator/toPromise';
 import {FireBrigade} from "../../entities/fireBrigade";
 import {FireEngineAbbreviation} from "../../entities/fireEngineAbbreviation";
-import {Router} from "@angular/router";
+import {Params, Router} from "@angular/router";
 
 @Injectable()
 export class FireEngineService {
@@ -36,6 +36,16 @@ export class FireEngineService {
             .set('Accept', 'application/json');
         return this.http.get<FireEngine>(url, {headers});
     }
+
+    findByFireBrigadeId(fireBrigadeId: string): Promise<FireEngine[]> {
+        const url = 'http://localhost:8080/fireEngines/search/findByFireBrigade_Id?projection=all';
+        const headers = new HttpHeaders()
+            .set('Accept', 'application/json');
+        let params = new HttpParams() .set('id', fireBrigadeId);
+        return this.http.get<Array<FireEngine>>(url, {headers,params}).toPromise().then(fireEngines => fireEngines['_embedded']['fireEngines'])
+
+    }
+
 
     createFireEngine(fireEngine: FireEngine): Observable<FireEngine> {
         let url = 'http://localhost:8080/fireEngines';
