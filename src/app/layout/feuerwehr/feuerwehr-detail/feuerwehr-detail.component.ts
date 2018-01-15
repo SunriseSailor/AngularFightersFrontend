@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import { FireBrigade } from '../../../entities/fireBrigade';
 import { FireBrigadeService } from '../feuerwehr.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { createClient, GoogleMapsClient} from '@google/maps';
+import {} from '@types/googlemaps';
+declare var google: any;
 
 @Component({
   selector: 'feuerwehr-detail',
@@ -9,15 +12,17 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./feuerwehr-detail.component.scss']
 })
 
-export class FeuerwehrDetailComponent implements OnInit {
+export class FeuerwehrDetailComponent implements OnInit, AfterViewInit {
 
     id: string;
     fireBrigade: FireBrigade;
     errors: string;
 
+
     constructor(private fireBrigadeService: FireBrigadeService,
                 private route: ActivatedRoute,
-                private router: Router) { }
+                private router: Router,
+                ) { }
 
     deleteDetail(): void {
         this.fireBrigadeService.deleteFireBrigade(this.fireBrigade.id.toString()).subscribe(
@@ -31,6 +36,31 @@ export class FeuerwehrDetailComponent implements OnInit {
 
         );
 
+    }
+
+
+    myMap() {
+        var map = new google.maps.Map(document.getElementById('googleMap'), {
+            zoom: 16,
+            center: google.maps.LatLng(-34.397, 150.644)
+        });
+        let geocoder = new google.maps.Geocoder();
+        this.geocodeAddress(geocoder, map);
+    }
+
+    geocodeAddress(geocoder, resultsMap) {
+        var address =  this.fireBrigade.streetName+", " +this.fireBrigade.postTown;
+        geocoder.geocode({'address': address}, function(results, status) {
+            if (status === 'OK') {
+                resultsMap.setCenter(results[0].geometry.location);
+                var marker = new google.maps.Marker({
+                    map: resultsMap,
+                    position: results[0].geometry.location
+                });
+            } else {
+                alert('Geocode was not successful for the following reason: ' + status);
+            }
+        });
     }
 
     ngOnInit() {
@@ -48,6 +78,9 @@ export class FeuerwehrDetailComponent implements OnInit {
                 );
             }
         );
+    }
+    ngAfterViewInit() {
+        setTimeout(() => this.myMap(),2000)
     }
 
 }
