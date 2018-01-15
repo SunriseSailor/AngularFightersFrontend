@@ -3,7 +3,6 @@ import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import {FireFighter} from "../../entities/fireFighter";
 import 'rxjs/add/operator/toPromise';
-import {FireBrigade} from "../../entities/fireBrigade";
 import {Router} from "@angular/router";
 
 @Injectable()
@@ -12,7 +11,7 @@ export class FireFighterService {
     }
 
     findAll(): Promise<FireFighter[]> {
-        let url = 'http://localhost:8080/fireFighters?projection=all&size=100';
+        let url = 'http://localhost:8080/fireFighters?projection=all&size=1000';
         let headers = new HttpHeaders().set('Accept', 'application/json');
         return this.http.get<Array<FireFighter>>(url, {headers}).toPromise().then(fireFighters => fireFighters['_embedded']['fireFighters'])
     }
@@ -39,7 +38,6 @@ export class FireFighterService {
     updateFireFighter(fireFighter: FireFighter): Observable<FireFighter> {
         let url = 'http://localhost:8080/fireFighters/'+fireFighter.id;
         let headers = new HttpHeaders().set('Accept', 'application/json');
-        fireFighter.fireBrigade = null;
         return this.http.put<FireFighter>(url, fireFighter, { headers });
 
     }
