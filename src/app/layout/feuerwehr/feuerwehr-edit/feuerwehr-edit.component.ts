@@ -20,12 +20,34 @@ export class FeuerwehrEditComponent implements OnInit {
                 private router: Router) { }
 
     create() {
-        this.fireBrigadeService.createFireBrigade(this.fireBrigade);
-    }
+        this.fireBrigadeService.createFireBrigade(this.fireBrigade).subscribe(
+            fireBrigadeNew => {
+                let fireBrigadeId = this.fireBrigade.id;
+                this.fireBrigade = fireBrigadeNew;
+                console.log('Successfully created FireBrigade.');
+                this.router.navigate(['/feuerwehr'])
+
+            },
+            err => {
+                console.log('Error creating FireBrigade.');
+            }
+        );
+    };
 
     update() {
-        this.fireBrigadeService.updateFireBrigade(this.fireBrigade);
-    }
+        this.fireBrigadeService.updateFireBrigade(this.fireBrigade).subscribe(
+            fireBrigadeNew => {
+            let fireBrigadeId = this.fireBrigade.id;
+            this.fireBrigade = fireBrigadeNew;
+            console.log('Successfully updated FireBrigade.');
+                this.router.navigate(['/feuerwehr'])
+
+        },
+        err => {
+            console.log('Error updated FireBrigade.');
+        }
+        );
+    };
 
     ngOnInit() {
         this.route.params.subscribe(

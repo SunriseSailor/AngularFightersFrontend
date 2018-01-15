@@ -11,14 +11,14 @@ export class FireBrigadeService {
     constructor(private http: HttpClient, private router: Router) { }
 
     findAll(): Promise<FireBrigade[]> {
-        let url = 'http://localhost:8080/fireBrigades?projection=all&size=100';
+        let url = 'http://localhost:8080/fireBrigades?size=100';
         let headers = new HttpHeaders().set('Accept', 'application/json');
         return this.http.get<Array<FireBrigade>>(url, {headers})
             .toPromise().then(fireBrigades => fireBrigades['_embedded']['fireBrigades']);
     }
 
     findById(id: string): Observable<FireBrigade> {
-        const url = 'http://localhost:8080/fireBrigades/' + id + '?projection=all';
+        const url = 'http://localhost:8080/fireBrigades/' + id;
         const headers = new HttpHeaders()
             .set('Accept', 'application/json');
         return this.http.get<FireBrigade>(url, {headers});
@@ -29,29 +29,7 @@ export class FireBrigadeService {
         let headers = new HttpHeaders().set('Accept', 'application/json').set('Content-Type', 'application/json');
         return this.http.post<FireBrigade>(url, fireBrigade, { headers });
     }
-/*
-    fullCreate(fireBrigade: FireBrigade): void {
-        this.createFireBrigade(fireBrigade).subscribe(
-            fireBrigadeNew => {
-                let fireBrigadeId = fireBrigade.id;
-                fireBrigade = fireBrigadeNew;
 
-                fireBrigade = {
-                    id: fireBrigadeId,
-                    name: '',
-                    streetName: '',
-                    postalCode: '',
-                    postTown: ''
-                };
-                console.log('Successfully created FireBrigade.');
-
-            },
-            err => {
-                console.log('Error creating FireBrigade.');
-            }
-        );
-    }
-*/
     updateFireBrigade(fireBrigade: FireBrigade): Observable<FireBrigade> {
         let url = 'http://localhost:8080/fireBrigades/' + fireBrigade.id;
         let headers = new HttpHeaders().set('Accept', 'application/json');
