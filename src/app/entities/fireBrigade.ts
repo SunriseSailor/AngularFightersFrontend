@@ -4,5 +4,4 @@ export interface FireBrigade {
     streetName: string;
     postalCode: string;
     postTown: string;
-
 }

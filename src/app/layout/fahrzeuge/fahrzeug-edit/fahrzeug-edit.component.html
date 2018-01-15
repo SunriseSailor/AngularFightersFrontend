@@ -7,7 +7,7 @@
         <form *ngIf="fireEngine">
 
             <div *ngIf="fireEngine.id" class="form-group">
-                <label>Id:</label>
+                <label>ID:</label>
                 <input [(ngModel)]="fireEngine.id" disabled name="id" class="form-control">
             </div>
 
@@ -29,32 +29,30 @@
             </div>
 
             <div class="form-group">
-                <label>Baujahr</label>
+                <label>Baujahr:</label>
                 <input [(ngModel)]="fireEngine.buildYear" name="buildYear"
                        class="form-control">
             </div>
 
             <div class="form-group">
-                <label>Aktiv</label>
+                <label>Aktiv:</label>
                 <input [(ngModel)]="fireEngine.active" name="active"
                        class="form-control">
             </div>
 
             <div class="form-group">
-                <label>Bezeichnung</label>
+                <label>Bezeichnung:</label>
                 <select [(ngModel)]="fireEngine.abbreviation.id" name="abbreviation" class="form-control">
                     <option *ngFor="let a of abbreviations" [value]="a.id" [selected]="a.id == fireEngine.abbreviation.id">{{a.abbreviation}}</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label>Feuerwehr</label>
+                <label>Feuerwehr:</label>
                 <select [(ngModel)]="fireEngine.fireBrigade.id" name="fireBrigade" class="form-control" >
                     <option *ngFor="let f of fireBrigades" [value]="f.id" [selected]="f.id == fireEngine.fireBrigade.id">{{f.name}}</option>
                 </select>
             </div>
-
-
 
             <div *ngIf="errors" class="alert alert-danger">{{errors}}</div>
             <button *ngIf="fireEngine.id" class="btn btn-default" (click)="update()">Bearbeiten</button>
@@ -70,5 +68,3 @@
     </a>
     <pre>{{fireEngine | json}}</pre>
 </div>
-
-

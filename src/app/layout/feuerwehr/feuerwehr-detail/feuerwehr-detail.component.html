@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-md-12">
+        <h1>Feuerwehr Detailansicht</h1>
+        <div class="card" *ngIf="fireBrigade">
+            <div class="header">
+                <h2 class="title">{{fireBrigade.name}}</h2>
+            </div>
+            <div class="content">
+                <p>Feuerwehr ID: #{{fireBrigade.id}}</p>
+                <p>Ort: {{fireBrigade.postTown}}</p>
+                <p>PLZ: {{fireBrigade.postalCode}}</p>
+                <p>Straße: {{fireBrigade.streetName}}</p>
+                <p>
+                    <button class="btn btn-default" (click)="deleteDetail(fireBrigade)">
+                        Löschen
+                    </button>
+                    <a class="btn btn-default" [routerLink]="['/feuerwehr/feuerwehr-edit', fireBrigade.id]">
+                        Bearbeiten
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <a class="btn btn-default"
+           [routerLink]="['/feuerwehr']">
+            Zurück zur Übersicht
+        </a>
+    </div>
+</div>

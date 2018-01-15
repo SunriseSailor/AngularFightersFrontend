@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FahrzeugeComponent } from './fahrzeuge.component';
-import {FahrzeugDetailComponent} from "./fahrzeug-detail/fahrzeug-detail.component";
-import {FahrzeugEditComponent} from "./fahrzeug-edit/fahrzeug-edit.component";
+import { FahrzeugDetailComponent } from './fahrzeug-detail/fahrzeug-detail.component';
+import { FahrzeugEditComponent } from './fahrzeug-edit/fahrzeug-edit.component';
 
 const routes: Routes = [
     {

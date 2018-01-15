@@ -1,0 +1,48 @@
+<div class="card" *ngIf="fireBrigade">
+    <div class="header">
+        <h1 class="title" *ngIf="fireBrigade.id">Feuerwehr Bearbeiten</h1>
+        <h1 class="title" *ngIf="!fireBrigade.id">Neue Feuerwehr erstellen</h1>
+    </div>
+    <div class="content">
+        <form *ngIf="fireBrigade">
+
+            <div *ngIf="fireBrigade.id" class="form-group">
+                <label>ID:</label>
+                <input [(ngModel)]="fireBrigade.id" disabled name="id" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label>Name:</label>
+                <input [(ngModel)]="fireBrigade.name" name="name" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label>Ort:</label>
+                <input [(ngModel)]="fireBrigade.postTown" name="postTown" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label>PLZ:</label>
+                <input [(ngModel)]="fireBrigade.postalCode" name="postalCode" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label>Straße:</label>
+                <input [(ngModel)]="fireBrigade.streetName" name="streetName" class="form-control">
+            </div>
+
+            <div *ngIf="errors" class="alert alert-danger">{{errors}}</div>
+            <button *ngIf="fireBrigade.id" class="btn btn-default" (click)="update()">Bearbeiten</button>
+            <button *ngIf="!fireBrigade.id" class="btn btn-default" (click)="create()">Neu erstellen</button>
+
+        </form>
+    </div>
+</div>
+
+<div class="col-md-12">
+    <a class="btn btn-default"
+       [routerLink]="['/feuerwehr']">
+        Zurück zur Übersicht
+    </a>
+    <pre>{{fireBrigade | json}}</pre>
+</div>

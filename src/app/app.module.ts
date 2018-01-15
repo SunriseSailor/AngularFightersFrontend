@@ -8,8 +8,9 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
-import {FireEngineService} from "./layout/fahrzeuge/fahrzeuge.service";
-import {FormsModule} from "@angular/forms";
+import {FireEngineService} from './layout/fahrzeuge/fahrzeuge.service';
+import {FormsModule} from '@angular/forms';
+import {FireBrigadeService} from './layout/feuerwehr/feuerwehr.service';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -35,7 +36,7 @@ export function createTranslateLoader(http: HttpClient) {
         AppRoutingModule
     ],
     declarations: [AppComponent],
-    providers: [AuthGuard, FireEngineService],
+    providers: [AuthGuard, FireEngineService, FireBrigadeService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

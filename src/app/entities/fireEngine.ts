@@ -1,5 +1,5 @@
-import {FireEngineAbbreviation} from "./fireEngineAbbreviation";
-import {FireBrigade} from "./fireBrigade";
+import {FireEngineAbbreviation} from './fireEngineAbbreviation';
+import {FireBrigade} from './fireBrigade';
 
 export interface FireEngine {
     id: number;
@@ -8,7 +8,7 @@ export interface FireEngine {
     performance: string;
     buildYear: string;
     active: boolean;
-    abbreviation: FireEngineAbbreviation
+    abbreviation: FireEngineAbbreviation;
     fireBrigade: FireBrigade;
 
 }
