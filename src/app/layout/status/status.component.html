@@ -1,0 +1,19 @@
+<div [@routerTransition]>
+    <h1>Status | <a [routerLink]="['/status/status-edit']">Neuen Status hinzufügen</a></h1>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-condensed" *ngIf="fireFighterStatuses.length > 0">
+                <thead>
+                <tr>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tr *ngFor="let s of fireFighterStatuses">
+                    <td>{{s.description }}</td>
+                    <td><a class="btn btn-default" (click)="select(s)" [routerLink]="['/status/status-detail', s.id ]">Auswählen</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

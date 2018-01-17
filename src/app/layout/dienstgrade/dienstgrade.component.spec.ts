@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { DienstgradeComponent } from './dienstgrade.component';
 
 describe('DienstgradeComponent', () => {

@@ -1,7 +1,8 @@
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
     <div class="list-group">
-        <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Dashboard' | translate }}
+
+        <a routerLink="/dashboard" class="list-group-item">
+           <img src="assets/images/logo.png" width="150px"/>
         </a>
         <a [routerLink]="['/charts']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;{{ 'Charts' | translate }}
@@ -39,29 +40,29 @@
                     </li>
                 </ul>
             </li>
-            -->
+                       -->
         </div>
 
         <a [routerLink]="['/blank-page']" [routerLinkActive]="['router-link-active']" class="list-group-item">
         <i class="fa fa-file-o"></i>&nbsp;{{ 'Blank Page' | translate }}
     </a>
         <a [routerLink]="['/mitarbeiter']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-users"></i>&nbsp;{{ 'Mitarbeiter' | translate }}
+            <i class="fa fa-users"></i>&nbsp;{{ 'Employees' | translate }}
         </a>
         <a [routerLink]="['/dienstgrade']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-users"></i>&nbsp;{{ 'Dienstgrade' | translate }}
+            <i class="fa fa-users"></i>&nbsp;{{ 'Rank' | translate }}
         </a>
         <a [routerLink]="['/feuerwehr']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-users"></i>&nbsp;{{ 'Feuerwehr' | translate }}
+            <i class="fa fa-users"></i>&nbsp;{{ 'Firebrigade' | translate }}
         </a>
         <a [routerLink]="['/status']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-users"></i>&nbsp;{{ 'Status' | translate }}
         </a>
         <a [routerLink]="['/fahrzeuge']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-users"></i>&nbsp;{{ 'Fahrzeuge' | translate }}
+            <i class="fa fa-users"></i>&nbsp;{{ 'Vehicle' | translate }}
         </a>
         <a [routerLink]="['/fahrzeugbezeichnung']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-users"></i>&nbsp;{{ 'Bezeichnung' | translate }}
+            <i class="fa fa-users"></i>&nbsp;{{ 'Vehicle Name' | translate }}
         </a>
         <a class="list-group-item more-themes" href="http://www.strapui.com/" >
             {{ 'More Theme' | translate }}

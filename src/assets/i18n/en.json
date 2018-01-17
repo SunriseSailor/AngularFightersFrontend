@@ -11,6 +11,7 @@
     "Blank Page": "Blank Page",
     "More Theme": "More Themes",
     "Download Now": "Download Now",
+    "4-W-Rules download": "4-W-Rules download",
     "Language": "Language",
     "English": "English",
     "French": "French",
@@ -27,5 +28,12 @@
     "Pending Task" : "Pending Task",
     "In queue" : "In queue",
     "Mail" : "Mail",
-    "View All" : "View All"
+    "View All" : "View All",
+    "Employees": "Employees",
+    "Rank": "Rank",
+    "Firebrigade": "Firebrigade",
+    "Status": "Status",
+    "Vehicles": "Vehicles",
+    "Vehicle Name": "Vehicle Name"
+
 }

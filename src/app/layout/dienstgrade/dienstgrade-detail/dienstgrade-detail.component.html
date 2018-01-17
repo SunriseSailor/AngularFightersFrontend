@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col-md-12">
+        <h1>Dienstgrade | {{rank.abbreviation}}</h1>
+        <div class="card" *ngIf="rank">
+            <div class="content">
+                <p>Abkürzung: {{rank.description}}</p>
+                <p>Beschreibung: {{rank.description}}</p>
+                <p>
+                    <button class="btn btn-default" (click)="deleteDetail(rank)">Löschen</button>
+                    <a class="btn btn-default" [routerLink]="['/dienstgrade/dienstgrade-edit', rank.id]">Bearbeiten</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12"><a class="btn btn-default" [routerLink]="['/dienstgrade']">Zurück zur Übersicht</a></div>
+</div>
