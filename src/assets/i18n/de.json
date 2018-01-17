@@ -33,6 +33,8 @@
     "Rank": "Dienstgrade",
     "Firebrigade": "Feuerwehr",
     "Status": "Status",
-    "Vehicles": "Fahrzeuge",
-    "Vehicle Name": "Bezeichnung"
+    "Vehicle": "Fahrzeuge",
+    "FireFighter Status": "Status",
+    "Vehicle Name": "Bezeichnung",
+    "Volunteer Firebrigade": "Freiwillige Feuerwehr"
 }

@@ -33,7 +33,8 @@
     "Rank": "Rank",
     "Firebrigade": "Firebrigade",
     "Status": "Status",
-    "Vehicles": "Vehicles",
-    "Vehicle Name": "Vehicle Name"
-
+    "Vehicle": "Vehicle",
+    "Firefighter Status": "Firefighter Status",
+    "Vehicle Name": "Vehicle Name",
+    "Volunteer Firebrigade": "Volunteer Firebrigade"
 }

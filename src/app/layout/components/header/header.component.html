@@ -1,23 +1,22 @@
 <nav class="navbar navbar-expand-lg fixed-top">
-    <a class="navbar-brand" href="#">SB Admin Angular5 BS4 </a>
+    <a class="navbar-brand" href="#">{{ 'Volunteer Firebrigade' | translate }}</a>
     <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
         <!-- <span class="navbar-toggler-icon"></span> -->
         <i class="fa fa-bars text-muted" aria-hidden="true"></i>
     </button>
+    <li class="nav-item d-none d-xl-block">
+        <a
+            href="http://www.zivilschutz.steiermark.at/images/2016/Merkblatt_4-W-Regel.pdf"
+            class="nav-link btn mt-1" role="button"
+            style="padding: .375rem 1rem !important;border-color: #999;"
+        >
+            {{ '4-W-Rules download' | translate }}
+        </a>
+    </li>
     <div class="collapse navbar-collapse">
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="{{ 'Search' | translate }}" >
-        </form>
+
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item d-none d-xl-block">
-                <a
-                    href="http://www.zivilschutz.steiermark.at/images/2016/Merkblatt_4-W-Regel.pdf"
-                    class="nav-link btn mt-1" role="button"
-                    style="padding: .375rem 1rem !important;border-color: #999;"
-                >
-                    {{ '4-W-Rules download' | translate }}
-                </a>
-            </li> &nbsp;
+
             <!--
             <li class="nav-item">
                 <a href="javascript:void(0)" class="nav-link mt-1"
@@ -121,6 +120,10 @@
                     </a>
                 </div>
             </li>
+
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="{{ 'Search' | translate }}" >
+            </form>
         </ul>
     </div>
 </nav>
