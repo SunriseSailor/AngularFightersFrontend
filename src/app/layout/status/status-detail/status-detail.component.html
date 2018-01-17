@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-md-12">
+        <h1>Status | </h1>
+        <div class="card" *ngIf="fireFighterStatus">
+            <div class="content">
+                <p>Status: {{fireFighterStatus.description}}</p>
+                <p>
+                    <button class="btn btn-default" (click)="deleteDetail(fireFighterStatus)">Löschen</button>
+                    <a class="btn btn-default" [routerLink]="['/status/status-edit', fireFighterStatus.id]">Bearbeiten</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12"><a class="btn btn-default" [routerLink]="['/status']">Zurück zur Übersicht</a></div>
+</div>
