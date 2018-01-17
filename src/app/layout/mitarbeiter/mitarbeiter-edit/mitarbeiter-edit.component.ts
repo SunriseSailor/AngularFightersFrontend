@@ -20,34 +20,6 @@ export class MitarbeiterEditComponent implements OnInit {
                 private route: ActivatedRoute,
                 private router: Router) { }
 
-    create() {
-        this.fireFighterService.createFireFighter(this.fireFighter).subscribe(
-            fireFighterNew => {
-                let fireFighterId = this.fireFighter.id;
-                this.fireFighter = fireFighterNew;
-                console.log('Successfully created FireFighter');
-                this.router.navigate(['/mitarbeiter']);
-
-            },
-            err => {
-                console.log('Error creating FireFighter');
-            }
-        );
-    };
-    update() {
-        this.fireFighterService.updateFireFighter(this.fireFighter).subscribe(
-            fireFighterNew => {
-                let fireFighterId = this.fireFighter.id;
-                this.fireFighter = fireFighterNew;
-                console.log('Successfully updated FireFighter');
-                this.router.navigate(['/mitarbeiter']);
-
-            },
-            err => {
-                console.log('Error updating FireFighter');
-            }
-        );
-    };
     ngOnInit() {
         this.route.params.subscribe(
             params => {
@@ -83,4 +55,37 @@ export class MitarbeiterEditComponent implements OnInit {
             }
         );
     }
+
+    create() {
+        this.fireFighterService.createFireFighter(this.fireFighter).subscribe(
+            fireFighterNew => {
+                let fireFighterId = this.fireFighter.id;
+                this.fireFighter = fireFighterNew;
+                console.log('Successfully created FireFighter');
+                this.router.navigate(['/mitarbeiter']);
+
+            },
+            err => {
+                console.log('Error creating FireFighter');
+            }
+        );
+    }
+
+    update() {
+        this.fireFighterService.updateFireFighter(this.fireFighter).subscribe(
+            fireFighterNew => {
+                let fireFighterId = this.fireFighter.id;
+                this.fireFighter = fireFighterNew;
+                console.log('Successfully updated FireFighter');
+                this.router.navigate(['/mitarbeiter'])
+
+            },
+            err => {
+                console.log('Error updating FireFighter');
+            }
+        );
+    };
+
+
+
 }

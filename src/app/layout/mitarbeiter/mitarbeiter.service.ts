@@ -37,11 +37,9 @@ export class FireFighterService {
     }
 
     updateFireFighter(fireFighter: FireFighter): Observable<FireFighter> {
-        let url = 'http://localhost:8080/fireFighters/'+fireFighter.id;
+        let url = 'http://localhost:8080/fireFighters/' + fireFighter.id;
         let headers = new HttpHeaders().set('Accept', 'application/json');
-        fireFighter.fireBrigade = null;
         return this.http.put<FireFighter>(url, fireFighter, { headers });
-
     }
 
     updateFireFighterFireBrigade(fireFighter: FireFighter): Observable<FireBrigade> {
@@ -52,10 +50,12 @@ export class FireFighterService {
     }
 
     deleteFireFighter(id:string): Observable<FireFighter> {
-        let url = 'http://localhost:8080/fireFighters/'+id;
+        let url = 'http://localhost:8080/fireFighters/'+ id;
         let headers = new HttpHeaders().set('Accept', 'application/json');
         return this.http.delete<FireFighter>(url, { headers });
     }
+
+
 
 }
 
