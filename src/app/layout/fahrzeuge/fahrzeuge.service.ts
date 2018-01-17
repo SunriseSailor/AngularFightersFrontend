@@ -54,10 +54,32 @@ export class FireEngineService {
     }
 
     fullCreate(fireEngine: FireEngine) : void {
-        this.createFireEngine(fireEngine).subscribe(
+        let fireEngineWithout: FireEngine = {
+            id: null,
+            model: fireEngine.model,
+            licensePlate: fireEngine.licensePlate,
+            performance: fireEngine.performance,
+            buildYear: fireEngine.buildYear,
+            active: fireEngine.active,
+            abbreviation: {
+                id: NaN,
+                abbreviation: "",
+                description: "",
+                operatingLife: ""
+            },
+            fireBrigade: {
+                id: NaN,
+                name: "",
+                postTown: "",
+                postalCode: "",
+                streetName: ""
+            }
+        };
+        this.createFireEngine(fireEngineWithout).subscribe(
             fireEngineNew => {
                 let abbreviationId = fireEngine.abbreviation.id
                 let fireBrigadeId = fireEngine.fireBrigade.id
+                console.log(fireEngineNew.id)
                 fireEngine = fireEngineNew;
 
                 fireEngine.abbreviation = {
@@ -74,7 +96,7 @@ export class FireEngineService {
                                             postTown:"",
                                             streetName:""
                                         };
-                console.log(fireEngine.abbreviation.id)
+                console.log(fireEngine.id)
 
                 console.log("Successfully created FireEngine.");
                 this.updateFireEngineAbbreviation(fireEngine).subscribe(
@@ -100,6 +122,7 @@ export class FireEngineService {
 
             },
             err => {
+                console.log(fireEngine.id);
                 console.log("Error creating FireEngine.")
             }
         );
