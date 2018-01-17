@@ -32,7 +32,7 @@ export class FireFighterStatusService{
         return this.http.put<FireFighterStatus>(url, fireFighterStatus, { headers });
     }
     deleteFireFighterStatus(id:string): Observable<FireFighterStatus> {
-        let url = 'http://localhost:8080/fireFighterStatus/'+id;
+        let url = 'http://localhost:8080/fireFighterStatuses/'+id;
         let headers = new HttpHeaders().set('Accept', 'application/json');
         return this.http.delete<FireFighterStatus>(url, { headers });
     }

@@ -1,7 +1,7 @@
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12" *ngIf="rank">
         <h1>Dienstgrade | {{rank.abbreviation}}</h1>
-        <div class="card" *ngIf="rank">
+        <div class="card">
             <div class="content">
                 <p>Abkürzung: {{rank.description}}</p>
                 <p>Beschreibung: {{rank.description}}</p>
