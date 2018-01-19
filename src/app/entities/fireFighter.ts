@@ -1,11 +1,15 @@
-import {FireBrigade} from './fireBrigade';
+import {FireBrigade} from "./fireBrigade";
+import {FireFighterStatus} from "./fireFighterStatus";
+import {Rank} from "./rank";
 
-export interface FireFighter {
+export interface FireFighter{
     id: number;
+    gender: string;
     title: string;
     surname: string;
     name: string;
-    //rank: string;
+    dayOfBirth: Date;
+    rank: Rank;
     fireBrigade: FireBrigade;
-    //gender: string;
+    fireFighterStatus: FireFighterStatus;
 }

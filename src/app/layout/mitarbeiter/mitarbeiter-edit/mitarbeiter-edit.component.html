@@ -1,34 +1,110 @@
 <div class="card" *ngIf="fireFighter">
     <div class="header">
-        <h1 class="title" *ngIf="fireFighter.id">Mitarbeiter Bearbeiten</h1>
-        <h1 class="title" *ngIf="!fireFighter.id">Neuen Mitarbeiter anlegen</h1>
+        <h1 class="title" *ngIf="!fireFighter.id">Neuen Mitarbeiter hinzufügen</h1>
+        <h1 class="title" *ngIf="fireFighter.id">Mitarbeiter bearbeiten</h1>
     </div>
     <div class="content">
-        <form *ngIf="fireFighter">
+        <form *ngIf="fireFighter" #form="ngForm">
             <div *ngIf="fireFighter.id" class="form-group">
                 <label>ID:</label>
                 <input [(ngModel)]="fireFighter.id" disabled name="id" class="form-control">
             </div>
             <div class="form-group">
+                <label>Geschlecht:</label>
+                <input [(ngModel)]="fireFighter.gender" name="gender" class="form-control" required minlength="3">
+                <div class="text-danger" *ngIf="form?.controls['gender'].hasError('minlength')">
+                    Bitte geben Sie mindestens drei Zeichen ein!
+                </div>
+                <div class="text-danger" *ngIf="form?.controls['gender'].hasError('required')">
+                    Bitte füllen Sie dieses Feld aus!
+                </div>
+            </div>
+            <div class="form-group">
                 <label>Titel:</label>
-                <input [(ngModel)]="fireFighter.title" name="title" class="form-control">
+                <input [(ngModel)]="fireFighter.title" name="title" class="form-control" minlength="3">
+                <div class="text-danger" *ngIf="form?.controls['title'].hasError('minlength')">
+                    Bitte geben Sie mindestens drei Zeichen ein!
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Familienname:</label>
+                <input [(ngModel)]="fireFighter.surname" name="surname" class="form-control" required minlength="3">
+                <div class="text-danger" *ngIf="form?.controls['surname'].hasError('minlength')">
+                    Bitte geben Sie mindestens drei Zeichen ein!
+                </div>
+                <div class="text-danger" *ngIf="form?.controls['surname'].hasError('required')">
+                    Bitte füllen Sie dieses Feld aus!
+                </div>
             </div>
             <div class="form-group">
                 <label>Vorname:</label>
-                <input [(ngModel)]="fireFighter.name" name="name" class="form-control">
+                <input [(ngModel)]="fireFighter.name" name="name" class="form-control" required minlength="3">
+                <div class="text-danger" *ngIf="form?.controls['name'].hasError('minlength')">
+                    Bitte geben Sie mindestens drei Zeichen ein!
+                </div>
+                <div class="text-danger" *ngIf="form?.controls['name'].hasError('required')">
+                    Bitte füllen Sie dieses Feld aus!
+                </div>
+            </div>
+            <!--
+            <div class="form-group">
+                <label>Geburtsdatum:</label>
+                <input [(ngModel)]="fireFighter.model" name="model" class="form-control" required minlength="3">
+                <div class="text-danger" *ngIf="form?.controls['model'].hasError('minlength')">
+                    Bitte geben Sie das Geburtsdatum in folgendem Formal ein: DD.MM.YYYY!
+                </div>
+                <div class="text-danger" *ngIf="form?.controls['model'].hasError('required')">
+                    Bitte füllen Sie dieses Feld aus!
+                </div>
             </div>
             <div class="form-group">
-                <label>Nachname:</label>
-                <input [(ngModel)]="fireFighter.surname" name="surname" class="form-control">
+                <label>Dienstgrad:</label>
+                <select [(ngModel)]="fireFighter.abbreviation.id" name="abbreviation" required minlength="1" class="form-control">
+                    <option *ngFor="let a of abbreviations" [value]="a.id" [selected]="a.id == fireFighter.abbreviation.id">{{a.abbreviation}}</option>
+                </select>
+                <div class="text-danger" *ngIf="form?.controls['abbreviation'].hasError('minlength')">
+                    Bitte wählen Sie eine Abkürzung aus!
+                </div>
+                <div class="text-danger" *ngIf="form?.controls['abbreviation'].hasError('required')">
+                    Bitte wählen Sie eine Abkürzung aus!
+                </div>
             </div>
             <div class="form-group">
                 <label>Feuerwehr:</label>
-                <input [(ngModel)]="fireFighter.fireBrigade.name" name="fireBrigade" class="form-control">
+                <select [(ngModel)]="fireFighter.abbreviation.id" name="abbreviation" required minlength="1" class="form-control">
+                    <option *ngFor="let a of abbreviations" [value]="a.id" [selected]="a.id == fireFighter.abbreviation.id">{{a.abbreviation}}</option>
+                </select>
+                <div class="text-danger" *ngIf="form?.controls['abbreviation'].hasError('minlength')">
+                    Bitte wählen Sie eine Abkürzung aus!
+                </div>
+                <div class="text-danger" *ngIf="form?.controls['abbreviation'].hasError('required')">
+                    Bitte wählen Sie eine Abkürzung aus!
+                </div>
             </div>
+            <div class="form-group">
+                <label>Status:</label>
+                <select [(ngModel)]="fireFighter.abbreviation.id" name="abbreviation" required minlength="1" class="form-control">
+                    <option *ngFor="let a of abbreviations" [value]="a.id" [selected]="a.id == fireFighter.abbreviation.id">{{a.abbreviation}}</option>
+                </select>
+                <div class="text-danger" *ngIf="form?.controls['abbreviation'].hasError('minlength')">
+                    Bitte wählen Sie eine Abkürzung aus!
+                </div>
+                <div class="text-danger" *ngIf="form?.controls['abbreviation'].hasError('required')">
+                    Bitte wählen Sie eine Abkürzung aus!
+                </div>
+            </div>
+            -->
+
             <div *ngIf="errors" class="alert alert-danger">{{errors}}</div>
             <button *ngIf="fireFighter.id" class="btn btn-default" (click)="update()">Bearbeiten</button>
             <button *ngIf="!fireFighter.id" class="btn btn-default" (click)="create()">Hinzufügen</button>
+
         </form>
     </div>
 </div>
-<div class="col-md-12"><a class="btn btn-default" [routerLink]="['/mitarbeiter']">Zurück zur Übersicht</a></div>
+<div class="col-md-12">
+    <a class="btn btn-default"
+       [routerLink]="['/mitarbeiter']">
+        Zurück zur Übersicht
+    </a>
+</div>

@@ -1,91 +1,91 @@
 import { Component, OnInit } from '@angular/core';
-import { FireFighter } from '../../../entities/fireFighter';
-import { FireFighterService } from '../mitarbeiter.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import {FireFighter} from "../../../entities/fireFighter";
+import {FireFighterService} from "../mitarbeiter.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {Rank} from "../../../entities/rank";
 import {FireBrigade} from "../../../entities/fireBrigade";
+import {FireFighterStatus} from "../../../entities/fireFighterStatus";
 
 @Component({
-    selector: 'mitarbeiter-edit',
-    templateUrl: './mitarbeiter-edit.component.html',
-    styleUrls: ['./mitarbeiter-edit.component.scss']
+  selector: 'mitarbeiter-edit',
+  templateUrl: './mitarbeiter-edit.component.html',
+  styleUrls: ['./mitarbeiter-edit.component.scss']
 })
-
 export class MitarbeiterEditComponent implements OnInit {
+
     id: string;
     fireFighter: FireFighter;
-    fireBrigades: FireBrigade[];
+    rank: Rank;
+    fireBrigade: FireBrigade;
+    fireFighterStatus: FireFighterStatus;
     errors: string;
+  constructor(private fireFighterService: FireFighterService,
+              private route: ActivatedRoute,
+              private router: Router  ) { }
 
-    constructor(private fireFighterService: FireFighterService,
-                private route: ActivatedRoute,
-                private router: Router) { }
+  ngOnInit() {
+      this.route.params.subscribe(
+          params => {
+              this.id = params['id'];
+              if(this.id != null) {
 
-    ngOnInit() {
-        this.route.params.subscribe(
-            params => {
-                this.id = params['id'];
-                if (this.id != null) {
-                    this.fireFighterService.findById(this.id).subscribe(
-                        fireFighter => {
-                            this.fireFighter = fireFighter;
-                            this.errors = '';
-                        },
-                        err => {
-                            this.errors = 'Fehler beim Laden';
-                        }
-                    );
-                } else {
-                    this.fireFighter = {
-                        id: NaN,
-                        title: '',
-                        surname: '',
-                        name: '',
-                        fireBrigade:{
-                            id: NaN,
-                            name:"",
-                            postTown:"",
-                            postalCode:"",
-                            streetName:""
-                        }
-                    };
-                }
-                this.fireFighterService.findAllFireBrigades()
-                    .then(fireBrigades => this.fireBrigades = fireBrigades)
-                    .catch(err=>console.log(err))
-            }
-        );
-    }
+                  this.fireFighterService.findById(this.id).subscribe(
+                      fireFighter => {
+                          this.fireFighter = fireFighter;
+                          this.errors = '';
+                      },
+                      err => {
+                          this.errors = 'Fehler beim Laden';
+                      }
+                  );
+              }
+              else {
+                  this.fireFighter = {
+                      id: NaN,
+                      gender:"",
+                      title:"",
+                      surname:"",
+                      name:"",
+                      dateOfBirth: Date,
+                      rank:{
+                          id: NaN,
+                          description:"",
+                          abbreviation:""
+                      },
+                      fireBrigade:{
+                          id: NaN,
+                          name:"",
+                          streetName:"",
+                          postalCode:"",
+                          postTown:""
+                      },
+                      fireFighterStatus:{
+                          id: NaN,
+                          description:""
+                      }
+                  };
+              }
 
-    create() {
-        this.fireFighterService.createFireFighter(this.fireFighter).subscribe(
-            fireFighterNew => {
-                let fireFighterId = this.fireFighter.id;
-                this.fireFighter = fireFighterNew;
-                console.log('Successfully created FireFighter');
-                this.router.navigate(['/mitarbeiter']);
+              this.fireFighterService.findAllRanks()
+                  .then(rank => this.rank = rank)
+                  .catch(err=>console.log(err))
+              this.fireFighterService.findAllFireBrigades()
+                  .then(fireBrigade => this.fireBrigade = fireBrigade)
+                  .catch(err=>console.log(err))
+              this.fireFighterService.findAllFireFighterStatuses()
+                  .then(fireFighterStatus => this.fireFighterStatus = fireFighterStatus)
+                  .catch(err=>console.log(err))
 
-            },
-            err => {
-                console.log('Error creating FireFighter');
-            }
-        );
-    }
+          }
+      );
+  }
 
     update() {
-        this.fireFighterService.updateFireFighter(this.fireFighter).subscribe(
-            fireFighterNew => {
-                let fireFighterId = this.fireFighter.id;
-                this.fireFighter = fireFighterNew;
-                console.log('Successfully updated FireFighter');
-                this.router.navigate(['/mitarbeiter'])
-
-            },
-            err => {
-                console.log('Error updating FireFighter');
-            }
-        );
-    };
-
-
+        this.fireFighterService.fullUpdate(this.fireFighter)
+  }
+    create() {
+        //console.log(this.fireFighter.abbreviation.id)
+        this.fireFighterService.fullCreate(this.fireFighter)
+    }
 
 }

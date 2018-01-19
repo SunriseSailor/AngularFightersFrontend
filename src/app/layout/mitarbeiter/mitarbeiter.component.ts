@@ -11,16 +11,19 @@ import { routerTransition } from '../../router.animations';
 })
 
 export class MitarbeiterComponent implements OnInit {
-
     fireFighters: Array<FireFighter> = [];
+    //fireBrigades: FireBrigade[];
+    //fireBrigadeId: number;
     selectedFireFighter: FireFighter;
+    filtered: boolean = false;
 
     constructor(private fireFighterService: FireFighterService) {}
 
     ngOnInit() {
         this.showAllFireFighters();
+        this.fireFighterService.findAllFireBrigades()
+            .catch(err=>console.log(err));
     }
-
     select(f: FireFighter): void {
         this.selectedFireFighter = f;
         console.log(this.fireFighters);
@@ -32,9 +35,8 @@ export class MitarbeiterComponent implements OnInit {
 
     showAllFireFighters(): void {
         this.fireFighterService.findAll()
-            .then(fireFighter => this.fireFighters = fireFighter)
+            .then(fireFighters => this.fireFighters = fireFighters)
             .catch(err => console.log(err));
+        this.filtered = false;
     }
-
-
 }

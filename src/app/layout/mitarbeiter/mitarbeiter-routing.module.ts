@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { MitarbeiterComponent } from './mitarbeiter.component';
-import {MitarbeiterDetailComponent} from "./mitarbeiter-detail/mitarbeiter-detail.component";
-import {MitarbeiterEditComponent} from "./mitarbeiter-edit/mitarbeiter-edit.component";
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
+import {MitarbeiterComponent} from './mitarbeiter.component';
+import {MitarbeiterDetailComponent} from './mitarbeiter-detail/mitarbeiter-detail.component';
+import {MitarbeiterEditComponent} from './mitarbeiter-edit/mitarbeiter-edit.component';
 
 const routes: Routes = [
     {
