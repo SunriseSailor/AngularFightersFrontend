@@ -10,7 +10,7 @@ export class RankService {
     constructor(private http: HttpClient, private router: Router) { }
 
     findAll(): Promise<Rank[]> {
-        let url = 'http://localhost:8080/ranks?size=500';
+        let url = 'http://localhost:8080/ranks?size=1000';
         let headers = new HttpHeaders().set('Accept', 'application/json');
         return this.http.get<Array<Rank>>(url, {headers})
             .toPromise().then(ranks => ranks['_embedded']['ranks']);

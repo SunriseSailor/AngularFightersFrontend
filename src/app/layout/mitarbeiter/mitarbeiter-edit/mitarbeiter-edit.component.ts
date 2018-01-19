@@ -10,8 +10,7 @@ import {routerTransition} from "../../../router.animations";
 @Component({
   selector: 'mitarbeiter-edit',
   templateUrl: './mitarbeiter-edit.component.html',
-  styleUrls: ['./mitarbeiter-edit.component.scss'],
-  animations: [routerTransition()]
+  styleUrls: ['./mitarbeiter-edit.component.scss']
 })
 export class MitarbeiterEditComponent implements OnInit {
 
@@ -69,24 +68,24 @@ export class MitarbeiterEditComponent implements OnInit {
 
               this.fireFighterService.findAllRanks()
                   .then(rank => this.rank = rank)
-                  .catch(err=>console.log(err))
+                  .catch(err => console.log(err));
               this.fireFighterService.findAllFireBrigades()
                   .then(fireBrigade => this.fireBrigade = fireBrigade)
-                  .catch(err=>console.log(err))
+                  .catch(err => console.log(err));
               this.fireFighterService.findAllFireFighterStatuses()
                   .then(fireFighterStatus => this.fireFighterStatus = fireFighterStatus)
-                  .catch(err=>console.log(err))
+                  .catch(err => console.log(err));
 
           }
       );
   }
 
     update() {
-        this.fireFighterService.fullUpdate(this.fireFighter)
+        this.fireFighterService.fullUpdate(this.fireFighter);
   }
+
     create() {
-        //console.log(this.fireFighter.abbreviation.id)
-        this.fireFighterService.fullCreate(this.fireFighter)
+        this.fireFighterService.fullCreate(this.fireFighter);
     }
 
 }

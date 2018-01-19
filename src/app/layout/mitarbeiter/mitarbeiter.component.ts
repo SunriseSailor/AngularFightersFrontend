@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FireFighter } from '../../entities/fireFighter';
 import { FireFighterService } from './mitarbeiter.service';
 import { routerTransition } from '../../router.animations';
+import {FireBrigade} from "../../entities/fireBrigade";
 
 @Component({
     selector: 'app-mitarbeiter',
@@ -11,8 +12,9 @@ import { routerTransition } from '../../router.animations';
 })
 
 export class MitarbeiterComponent implements OnInit {
-    fireFighters: Array<FireFighter> = [];
 
+    fireFighters: Array<FireFighter> = [];
+    fireBrigades: FireBrigade[];
     selectedFireFighter: FireFighter;
     filtered: boolean = false;
 
@@ -21,6 +23,7 @@ export class MitarbeiterComponent implements OnInit {
     ngOnInit() {
         this.showAllFireFighters();
         this.fireFighterService.findAllFireBrigades()
+            .then(fireBrigades => this.fireBrigades = fireBrigades)
             .catch(err=>console.log(err));
     }
     select(f: FireFighter): void {

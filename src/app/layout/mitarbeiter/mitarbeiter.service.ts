@@ -20,7 +20,7 @@ export class FireFighterService {
     }
 
     findAllRanks(): Promise<Rank[]> {
-        let url = 'http://localhost:8080/ranks';
+        let url = 'http://localhost:8080/ranks?size=500';
         let headers = new HttpHeaders().set('Accept', 'application/json');
         return this.http.get<Array<Rank>>(url, {headers}).toPromise().then(ranks => ranks['_embedded']['ranks'])
     }
@@ -32,9 +32,10 @@ export class FireFighterService {
     }
 
     findAllFireFighterStatuses(): Promise<FireFighterStatus[]> {
-        let url = 'http://localhost:8080/fireFighterStatus';
+        let url = 'http://localhost:8080/fireFighterStatuses';
         let headers = new HttpHeaders().set('Accept', 'application/json');
-        return this.http.get<Array<FireFighterStatus>>(url, {headers}).toPromise().then(fireFighterStatuses => fireFighterStatuses['_embedded']['fireFighterStatuses'])
+        return this.http.get<Array<FireFighterStatus>>(url, {headers})
+            .toPromise().then(fireFighterStatuses => fireFighterStatuses['_embedded']['fireFighterStatuses'])
     }
 
     findById(id: string): Observable<FireFighter> {

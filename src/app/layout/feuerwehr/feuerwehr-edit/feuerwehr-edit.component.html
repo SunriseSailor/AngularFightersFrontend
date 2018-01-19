@@ -35,7 +35,7 @@
 
             <div class="form-group">
                 <label>PLZ:</label>
-                <input [(ngModel)]="fireBrigade.postalCode" name="postalCode" class="form-control" required minlength="4" maxlength="4">
+                <input [(ngModel)]="fireBrigade.postalCode" name="postalCode" class="form-control" pattern="^(\d*)$" required minlength="4" maxlength="4">
                 <div class="text-danger" *ngIf="form?.controls['postalCode']?.hasError('minlength')">
                     Bitte geben Sie eine korrekte PLZ ein!
                 </div>

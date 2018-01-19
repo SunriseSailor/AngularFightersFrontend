@@ -3,12 +3,18 @@
         <h1>Fahrzeug Detailansicht</h1>
         <div class="card" *ngIf="fireEngine">
             <div class="header">
-                <h2 class="title">{{fireEngine.abbreviation.abbreviation}} {{fireEngine.fireBrigade.name}}</h2>
+
+                ID	Modell	Kennzeichen	Leistung	Baujahr	Aktiv	Bezeichnung	Feuerwehr
+
+                <h2 class="title">{{fireEngine.model}}</h2>
             </div>
             <div class="content">
                 <p>Fahrzeug ID: #{{fireEngine.id}}</p>
+                <p>Kennzeichen: {{fireEngine.licensePlate}}</p>
+                <p>Leistung: {{fireEngine.performance}} kW</p>
                 <p>Baujahr: {{fireEngine.buildYear}}</p>
-                <p>{{fireEngine.model}} - {{fireEngine.licensePlate}}</p>
+                <p>Aktiv?: {{fireEngine.active}}</p>
+                <p>Gehört zu: Feuerwehr {{fireEngine.fireBrigade.name}}</p>
                 <p>
                     <button
                         class="btn btn-default"

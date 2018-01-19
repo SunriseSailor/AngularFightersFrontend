@@ -80,8 +80,6 @@ export class FahrzeugEditComponent implements OnInit {
     create() {
         //console.log(this.fireEngine.abbreviation.id)
         this.fireEngineService.fullCreate(this.fireEngine)
-
-
     }
 
 }
