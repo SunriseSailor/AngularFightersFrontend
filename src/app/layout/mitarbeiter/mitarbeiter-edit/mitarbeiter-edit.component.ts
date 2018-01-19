@@ -43,11 +43,11 @@ export class MitarbeiterEditComponent implements OnInit {
               else {
                   this.fireFighter = {
                       id: NaN,
-                      gender:"",
+                      gender: "",
                       title:"",
                       surname:"",
                       name:"",
-                      dayOfBirth: "",
+                      dayOfBirth:"",
                       rank:{
                           id: NaN,
                           description:"",

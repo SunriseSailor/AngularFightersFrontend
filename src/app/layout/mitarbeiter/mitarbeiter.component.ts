@@ -12,8 +12,7 @@ import { routerTransition } from '../../router.animations';
 
 export class MitarbeiterComponent implements OnInit {
     fireFighters: Array<FireFighter> = [];
-    //fireBrigades: FireBrigade[];
-    //fireBrigadeId: number;
+
     selectedFireFighter: FireFighter;
     filtered: boolean = false;
 

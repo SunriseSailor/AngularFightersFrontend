@@ -31,11 +31,11 @@ export class FireFighterService {
         return this.http.get<Array<FireBrigade>>(url, {headers}).toPromise().then(fireBrigades => fireBrigades['_embedded']['fireBrigades'])
     }
 
-        findAllFireFighterStatuses(): Promise<FireFighterStatus[]> {
-            let url = 'http://localhost:8080/fireFighterStatus';
-            let headers = new HttpHeaders().set('Accept', 'application/json');
-            return this.http.get<Array<FireFighterStatus>>(url, {headers}).toPromise().then(fireFighterStatuses => fireFighterStatuses['_embedded']['fireFighterStatuses'])
-        }
+    findAllFireFighterStatuses(): Promise<FireFighterStatus[]> {
+        let url = 'http://localhost:8080/fireFighterStatus';
+        let headers = new HttpHeaders().set('Accept', 'application/json');
+        return this.http.get<Array<FireFighterStatus>>(url, {headers}).toPromise().then(fireFighterStatuses => fireFighterStatuses['_embedded']['fireFighterStatuses'])
+    }
 
     findById(id: string): Observable<FireFighter> {
         const url = 'http://localhost:8080/fireFighters/'+id+'?projection=all';
@@ -91,7 +91,6 @@ export class FireFighterService {
                 let fireFighterStatusId = fireFighter.fireFighterStatus.id
                 console.log(fireFighterNew.id)
                 fireFighter = fireFighterNew;
-
                 fireFighter.rank = {
                                             id: rankId,
                                             description:"",
