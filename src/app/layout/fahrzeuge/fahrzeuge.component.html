@@ -1,12 +1,6 @@
 <div [@routerTransition]>
-    <h1>Feuerwehrfahrzeuge</h1>
+    <h1>Feuerwehrfahrzeuge | <a [routerLink]="['/fahrzeuge/fahrzeuge-edit']">Neues Fahrzeug erstellen</a></h1><br><br>
     <div class="row">
-        <div class="col-md-12">
-            <a class="btn btn-default"
-               [routerLink]="['/fahrzeuge/fahrzeug-edit']">
-                Neues Fahrzeug erstellen
-            </a>
-        </div>
         <div class="col-md-12">
             <form class="form-group">
                 <div class="form-group">

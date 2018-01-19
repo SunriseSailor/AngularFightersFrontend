@@ -21,6 +21,7 @@ const routes: Routes = [
             { path: 'feuerwehr', loadChildren: './feuerwehr/feuerwehr.module#FeuerwehrModule' },
             { path: 'status', loadChildren: './status/status.module#StatusModule' },
             { path: 'fahrzeuge', loadChildren: './fahrzeuge/fahrzeuge.module#FahrzeugeModule' },
+            { path: 'statistik', loadChildren: './statistik/statistik.module#StatistikModule' },
             { path: 'fahrzeugbezeichnung', loadChildren: './fahrzeugbezeichnung/fahrzeugbezeichnung.module#FahrzeugbezeichnungModule' }
         ]
     }

@@ -15,20 +15,20 @@ export class DashboardComponent implements OnInit {
         this.sliders.push(
             {
                 imagePath: 'assets/images/slider1.jpg',
-                label: 'First slide label',
+                label: 'Feuerwehr Feldbach',
                 text:
-                    'Nulla vitae elit libero, a pharetra augue mollis interdum.'
+                    'Unsere Freizeit für Ihre Sicherheit!'
             },
             {
                 imagePath: 'assets/images/slider2.jpg',
-                label: 'Second slide label',
-                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+                label: 'Wir suchen dich!',
+                text: 'Egal ob Neu- oder älterer Quereinsteiger!'
             },
             {
                 imagePath: 'assets/images/slider3.jpg',
-                label: 'Third slide label',
+                label: '122',
                 text:
-                    'Praesent commodo cursus magna, vel scelerisque nisl consectetur.'
+                    'Notrufnummer der Feuerwehr'
             }
         );
 

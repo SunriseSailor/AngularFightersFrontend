@@ -6,58 +6,78 @@
                 <ng-template ngbSlide *ngFor="let slider of sliders">
                     <img class="img-fluid mx-auto d-block" [src]="slider.imagePath" alt="Random first slide" width="100%">
                     <div class="carousel-caption">
-                        <h3>{{slider.label}}</h3>
-                        <p>{{slider.text}}</p>
+                        <h1>{{slider.label}}</h1>
+                        <br>
+                        <hr>
+                        <br>
+                        <h3>{{slider.text}}</h3>
+                        <br>
                     </div>
                 </ng-template>
             </ngb-carousel>
         </div>
     </div>
+    <br><br>
     <hr>
-    <div class="row">
-        <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'primary'" [icon]="'fa-comments'" [count]="26" [label]="'New Comments!'" ></app-stat>
-        </div>
-        <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'warning'" [icon]="'fa-tasks'" [count]="12" [label]="'New task!'" ></app-stat>
-        </div>
-        <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'success'" [icon]="'fa-shopping-cart'" [count]="124" [label]="'New Orders!'" ></app-stat>
-        </div>
-        <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'danger'" [icon]="'fa-support'" [count]="13" [label]="'New Tickets!'"></app-stat>
-        </div>
-    </div>
-    <hr />
-    <ngb-alert [type]="alert.type" (close)="closeAlert(alert)" *ngFor="let alert of alerts">{{ alert.message }}</ngb-alert>
-    <hr />
-    <div class="row">
-        <div class="col-lg-8">
-            <div class="card card-default">
-                <div class="card-header">
-                    <i class="fa fa-clock-o fa-fw"></i> Responsive Timeline
-                </div>
-                <!-- /.card-header -->
-                <app-timeline></app-timeline>
-                <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-        </div>
-        <!-- /.col-lg-8 -->
-        <div class="col-lg-4">
-            <div class="card card-default mb-3">
-                <div class="card-header">
-                    <i class="fa fa-bell fa-fw"></i> Notifications card
-                </div>
-                <!-- /.card-header -->
-                <app-notification></app-notification>
-                <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
+    <br><br>
 
-            <app-chat></app-chat>
-            <!-- /.card .chat-card -->
+<div class="row">
+    <div class="col-sm-3">
+        <div class="card bg-light mb-3">
+            <div class="card-header">WO ist etwas passiert?</div>
+            <div class="card-body">
+                <p class="card-text">
+                    (Straße, Hausnummer, Kilometerstein, Stockwerk, Tür, Zufahrtswege...)<br>
+                    Geben Sie den genauen Ort an. Der Journaldienst in der Einsatzzentrale kennt sich in Ihrem Ort sicher nicht so gut aus, wie Sie selbst. Bedenken Sie "Hauptstraße 11" gibt es fast in jedem Ort. Also Ort nicht vergessen! Auf Autobahnen geben Sie die Nummer der Autobahn (z.B. A1), sowie den Kilometer an (alle 500 m stehen auf der Seite die kleinen blauen Taferl).Vergessen Sie nicht die Fahrtrichtung.
+                </p>
+            </div>
         </div>
-        <!-- /.col-lg-4 -->
     </div>
+    <div class="col-sm-3">
+        <div class="card bg-light mb-3">
+            <div class="card-header">WAS ist passiert?</div>
+            <div class="card-body">
+                <p class="card-text">
+                    Was brennt oder was ist passiert? Gibt es Verletzte ? (z.B. Patient mit stechenden Schmerzen im Brustkorb, Atemnot.) Brennt ein Mistkübel oder ein Wohnhaus, wo noch Kinder drinnen sind? Steht nur ein Auto im Weg oder ist es eine Massenkarambolage? Bei Gefahrenguttransportern ist es wichtig: Zahlen die auf Warentafeln aufscheinen, exakt durchgeben!
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="card bg-light mb-3">
+            <div class="card-header">WIE VIELE sind verletzt?</div>
+            <div class="card-body">
+                <p class="card-text">
+                    Ungefähre Anzahl der verletzen angeben damit genug Rettungskräfte geschickt werden können. Wichtig ist auch zu beschreiben wie stark die Personen verletzt sind (Bewusstlos, Atemnot, …)
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="card bg-light mb-3">
+            <div class="card-header">WER ruft an?</div>
+            <div class="card-body">
+                <p class="card-text">
+                    Geben sie Ihren Namen und Telefonnummer für Rückfragen an. Die Disponenten sind auf Notrufe in Stresssituation geschult, deshalb leiten sie das Gespräch damit nichts vergessen wird. Ein Notruf ist kostenlos, der Missbrauch wird jedoch rechtlich und finanziell geahndet.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <br><br><br>
+    <blockquote>
+        <b>Ihr Notruf löst die Hilfsmaßnahmen aus.</b> Je genauer Ihre Schilderung der Situation, desto gezielter kann Hilfe zum Unfallort geschickt werden!<br>
+        Wichtig ist das die Leitstelle den Anruf beendet wenn er alle Informationen hinterfragt hat.<br>
+        Verlassen Sie sich niemals darauf, dass bereits andere einen Notruf getätigt haben.
+    </blockquote>
+    <br><br><br>
+
+    <div class="row_colour">
+        <h2>Notruf Absetzen</h2><br><br>
+
+        <h3>Bei einem Notruf – egal ob Euronotruf, Polizei, Feuerwehr oder Rettung – muss man sich unbedingt an die 4-W-Regel halten!</h3><br><br>
+    </div>
+
+
 </div>

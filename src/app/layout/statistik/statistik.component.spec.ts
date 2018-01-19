@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MitarbeiterComponent } from './mitarbeiter.component';
+import { StatistikComponent } from './statistik.component';
 
-describe('MitarbeiterComponent', () => {
-    let component: MitarbeiterComponent;
-    let fixture: ComponentFixture<MitarbeiterComponent>;
+describe('StatistikComponent', () => {
+    let component: StatistikComponent;
+    let fixture: ComponentFixture<StatistikComponent>;
 
     beforeEach(
         async(() => {
             TestBed.configureTestingModule({
-                declarations: [MitarbeiterComponent]
+                declarations: [StatistikComponent]
             }).compileComponents();
         })
     );
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(MitarbeiterComponent);
+        fixture = TestBed.createComponent(StatistikComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });
@@ -23,3 +23,4 @@ describe('MitarbeiterComponent', () => {
         expect(component).toBeTruthy();
     });
 });
+

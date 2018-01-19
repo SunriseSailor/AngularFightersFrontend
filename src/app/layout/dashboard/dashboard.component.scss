@@ -1,0 +1,45 @@
+hr {
+    border: 0;
+    height: 1px;
+    background: #fff;
+    background-image: linear-gradient(to right, #ccc, #fff, #ccc);
+}
+
+.row_colour{
+    background-color: #b01817;
+    color: #ffffff;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-top: 40px;
+    text-align:center;
+    padding-left:15px;
+}
+
+.row_text{
+   padding-left: 15px;
+}
+
+.card-header{
+    background-color: #b01817;
+    color: #ffffff;
+    font-size: 18px;
+}
+.card-body{
+    background-color: #ffffff;
+}
+.card{
+    height: 100% !important;
+}
+
+blockquote {
+    color: #202020;
+    border-left: 6px solid #b01817;
+    font-size: 20px;
+    font-style: italic;
+    max-width:1200px;
+    text-align: left;
+    padding-left: 5px;
+    margin:0 auto;
+    width:auto;
+    display:table
+}

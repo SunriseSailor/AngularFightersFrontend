@@ -1,12 +1,6 @@
 <div [@routerTransition]>
-    <h1>Feuerwehren</h1>
+    <h1>Feuerwehr | <a [routerLink]="['/feuerwehr/feuerwehr-edit']">Neue Feuerwehr erstellen</a></h1><br><br>
     <div class="row">
-        <div class="col-md-12">
-            <a class="btn btn-default"
-               [routerLink]="['/feuerwehr/feuerwehr-edit']">
-                Neue Feuerwehr erstellen
-            </a>
-        </div>
         <div class="col-md-12">
             <table class="table table-condensed" *ngIf="fireBrigades.length > 0">
                 <thead>
