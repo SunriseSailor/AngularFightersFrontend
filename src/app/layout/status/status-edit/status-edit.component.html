@@ -12,11 +12,11 @@
             <div class="form-group">
                 <label>Status:</label>
                 <input [(ngModel)]="fireFighterStatus.description" name="description" class="form-control" required minlength="5">
-                <div class="text-danger" *ngIf="form?.controls['description'].hasError('minlength')">Bitte geben Sie mindestens fünf Zeichen ein!</div>
-                <div class="text-danger" *ngIf="form?.controls['description'].hasError('required')">Bitte füllen Sie dieses Feld aus!</div>
+                <div class="text-danger" *ngIf="form?.controls['description']?.hasError('minlength')">Bitte geben Sie mindestens fünf Zeichen ein!</div>
+                <div class="text-danger" *ngIf="form?.controls['description']?.hasError('required')">Bitte füllen Sie dieses Feld aus!</div>
             </div>
             <div *ngIf="errors" class="alert alert-danger">{{errors}}</div>
-            <button *ngIf="fireFighterStatus.id" class="btn btn-default" (click)="update()">Bearbeiten</button>
+            <button *ngIf="fireFighterStatus.id" class="btn btn-default" (click)="update()">Speichern</button>
             <button *ngIf="!fireFighterStatus.id" class="btn btn-default" (click)="create()">Hinzufügen</button>
         </form>
     </div>

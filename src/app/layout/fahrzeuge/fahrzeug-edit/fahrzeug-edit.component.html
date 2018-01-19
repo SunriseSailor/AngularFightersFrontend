@@ -13,10 +13,10 @@
             <div class="form-group">
                 <label>Modell:</label>
                 <input [(ngModel)]="fireEngine.model" name="model" class="form-control" required minlength="3">
-                <div class="text-danger" *ngIf="form?.controls['model'].hasError('minlength')">
+                <div class="text-danger" *ngIf="form?.controls['model']?.hasError('minlength')">
                     Bitte geben Sie mindestens drei Zeichen ein!
                 </div>
-                <div class="text-danger" *ngIf="form?.controls['model'].hasError('required')">
+                <div class="text-danger" *ngIf="form?.controls['model']?.hasError('required')">
                     Bitte füllen Sie dieses Feld aus!
                 </div>
             </div>
@@ -24,13 +24,13 @@
             <div class="form-group">
                 <label>Kennzeichen:</label>
                 <input [(ngModel)]="fireEngine.licensePlate" name="licensePlate" class="form-control" required minlength="3" maxlength="10">
-                <div class="text-danger" *ngIf="form?.controls['licensePlate'].hasError('minlength')">
+                <div class="text-danger" *ngIf="form?.controls['licensePlate']?.hasError('minlength')">
                     Bitte geben Sie mindestens drei Zeichen ein!
                 </div>
-                <div class="text-danger" *ngIf="form?.controls['licensePlate'].hasError('maxlenght')">
+                <div class="text-danger" *ngIf="form?.controls['licensePlate']?.hasError('maxlength')">
                     Bitte geben Sie nicht mehr als zehn Zeichen ein!
                 </div>
-                <div class="text-danger" *ngIf="form?.controls['licensePlate'].hasError('required')">
+                <div class="text-danger" *ngIf="form?.controls['licensePlate']?.hasError('required')">
                     Bitte füllen Sie dieses Feld aus!
                 </div>
             </div>
@@ -38,13 +38,13 @@
             <div class="form-group">
                 <label>Leistung:</label>
                 <input [(ngModel)]="fireEngine.performance" name="performance" required minlength="1" maxlength="5" pattern="^(\d*)$" class="form-control">
-                <div class="text-danger" *ngIf="form?.controls['performance'].hasError('minlength')">
+                <div class="text-danger" *ngIf="form?.controls['performance']?.hasError('minlength')">
                     Bitte geben Sie mindestens ein Zeichen ein!
                 </div>
-                <div class="text-danger" *ngIf="form?.controls['performance'].hasError('maxlenght')">
+                <div class="text-danger" *ngIf="form?.controls['performance']?.hasError('maxlength')">
                     Bitte geben Sie nicht mehr als fünf Zeichen ein!
                 </div>
-                <div class="text-danger" *ngIf="form?.controls['performance'].hasError('required')">
+                <div class="text-danger" *ngIf="form?.controls['performance']?.hasError('required')">
                     Bitte füllen Sie dieses Feld aus!
                 </div>
                 <div class="text-danger" *ngIf="form?.controls['performance'].hasError('pattern')">
@@ -55,13 +55,13 @@
             <div class="form-group">
                 <label>Baujahr:</label>
                 <input [(ngModel)]="fireEngine.buildYear" name="buildYear" required minlength="4" maxlength="4" pattern="^(\d*)$" class="form-control">
-                <div class="text-danger" *ngIf="form?.controls['buildYear'].hasError('minlength')">
+                <div class="text-danger" *ngIf="form?.controls['buildYear']?.hasError('minlength')">
                     Bitte geben Sie mindestens vier Zeichen ein!
                 </div>
-                <div class="text-danger" *ngIf="form?.controls['buildYear'].hasError('maxlenght')">
+                <div class="text-danger" *ngIf="form?.controls['buildYear']?.hasError('maxlength')">
                     Bitte geben Sie nicht mehr als vier Zeichen ein!
                 </div>
-                <div class="text-danger" *ngIf="form?.controls['buildYear'].hasError('required')">
+                <div class="text-danger" *ngIf="form?.controls['buildYear']?.hasError('required')">
                     Bitte füllen Sie dieses Feld aus!
                 </div>
                 <div class="text-danger" *ngIf="form?.controls['buildYear'].hasError('pattern')">
@@ -72,10 +72,10 @@
             <div class="form-group">
                 <label>Aktiv:</label>
                 <input [(ngModel)]="fireEngine.active" name="active" required pattern="^(false)|(true)$" class="form-control">
-                <div class="text-danger" *ngIf="form?.controls['active'].hasError('pattern')">
-                    Bitte geben Sie true oder false ein.
+                <div class="text-danger" *ngIf="form?.controls['active']?.hasError('pattern')">
+                    Bitte geben Sie "true" oder "false" ein.
                 </div>
-                <div class="text-danger" *ngIf="form?.controls['active'].hasError('required')">
+                <div class="text-danger" *ngIf="form?.controls['active']?.hasError('required')">
                     Bitte füllen Sie dieses Feld aus!
                 </div>
             </div>
@@ -85,10 +85,10 @@
                 <select [(ngModel)]="fireEngine.abbreviation.id" name="abbreviation" required minlength="1" class="form-control">
                     <option *ngFor="let a of abbreviations" [value]="a.id" [selected]="a.id == fireEngine.abbreviation.id">{{a.abbreviation}}</option>
                 </select>
-                <div class="text-danger" *ngIf="form?.controls['abbreviation'].hasError('minlength')">
+                <div class="text-danger" *ngIf="form?.controls['abbreviation']?.hasError('minlength')">
                     Bitte wählen Sie eine Abkürzung aus!
                 </div>
-                <div class="text-danger" *ngIf="form?.controls['abbreviation'].hasError('required')">
+                <div class="text-danger" *ngIf="form?.controls['abbreviation']?.hasError('required')">
                     Bitte wählen Sie eine Abkürzung aus!
                 </div>
             </div>
@@ -99,17 +99,17 @@
                     <option *ngFor="let f of fireBrigades" [value]="f.id" [selected]="f.id == fireEngine.fireBrigade.id">{{f.name}}</option>
                 </select>
 
-                <div class="text-danger" *ngIf="form?.controls['fireBrigade'].hasError('minlength')">
+                <div class="text-danger" *ngIf="form?.controls['fireBrigade']?.hasError('minlength')">
                     Bitte wählen Sie eine Feuerwehr aus!
                 </div>
-                <div class="text-danger" *ngIf="form?.controls['fireBrigade'].hasError('required')">
+                <div class="text-danger" *ngIf="form?.controls['fireBrigade']?.hasError('required')">
                     Bitte wählen Sie eine Feuerwehr aus!
                 </div>
 
             </div>
 
             <div *ngIf="errors" class="alert alert-danger">{{errors}}</div>
-            <button *ngIf="fireEngine.id" class="btn btn-default" (click)="update()">Bearbeiten</button>
+            <button *ngIf="fireEngine.id" class="btn btn-default" (click)="update()">Speichern</button>
             <button *ngIf="!fireEngine.id" class="btn btn-default" (click)="create()">Neu erstellen</button>
 
         </form>

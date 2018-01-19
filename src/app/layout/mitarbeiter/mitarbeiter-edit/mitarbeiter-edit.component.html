@@ -12,8 +12,8 @@
             <div class="form-group">
                 <label>Geschlecht:</label>
                 <input [(ngModel)]="fireFighter.gender" name="gender" class="form-control" required maxlength="1">
-                <div class="text-danger" *ngIf="form?.controls['gender'].hasError('required')">
-                    Bitte geben Sie entweder "m" oder "w" aus!
+                <div class="text-danger" *ngIf="form?.controls['gender']?.hasError('required')">
+                    Bitte geben Sie entweder "m" oder "w" an!
                 </div>
             </div>
             <div class="form-group">
@@ -23,30 +23,30 @@
             <div class="form-group">
                 <label>Familienname:</label>
                 <input [(ngModel)]="fireFighter.surname" name="surname" class="form-control" required minlength="3">
-                <div class="text-danger" *ngIf="form?.controls['surname'].hasError('minlength')">
+                <div class="text-danger" *ngIf="form?.controls['surname']?.hasError('minlength')">
                     Bitte geben Sie mindestens drei Zeichen ein!
                 </div>
-                <div class="text-danger" *ngIf="form?.controls['surname'].hasError('required')">
+                <div class="text-danger" *ngIf="form?.controls['surname']?.hasError('required')">
                     Bitte füllen Sie dieses Feld aus!
                 </div>
             </div>
             <div class="form-group">
                 <label>Vorname:</label>
                 <input [(ngModel)]="fireFighter.name" name="name" class="form-control" required minlength="3">
-                <div class="text-danger" *ngIf="form?.controls['name'].hasError('minlength')">
+                <div class="text-danger" *ngIf="form?.controls['name']?.hasError('minlength')">
                     Bitte geben Sie mindestens drei Zeichen ein!
                 </div>
-                <div class="text-danger" *ngIf="form?.controls['name'].hasError('required')">
+                <div class="text-danger" *ngIf="form?.controls['name']?.hasError('required')">
                     Bitte füllen Sie dieses Feld aus!
                 </div>
             </div>
             <div class="form-group">
                 <label>Datum:</label>
                 <input [(ngModel)]="fireFighter.dayOfBirth" name="dayOfBirth" class="form-control" required minlength="3">
-                <div class="text-danger" *ngIf="form?.controls['dayOfBirth'].hasError('minlength')">
-                    Bitte geben Sie das Datum im folgenden Format ein: DD.MM.YYYY
+                <div class="text-danger" *ngIf="form?.controls['dayOfBirth']?.hasError('minlength')">
+                    Bitte geben Sie das Datum im folgenden Format ein: DD-MM-YYYY
                 </div>
-                <div class="text-danger" *ngIf="form?.controls['dayOfBirth'].hasError('required')">
+                <div class="text-danger" *ngIf="form?.controls['dayOfBirth']?.hasError('required')">
                     Bitte füllen Sie dieses Feld aus!
                 </div>
             </div>
@@ -55,10 +55,10 @@
                 <select [(ngModel)]="fireFighter.rank.abbreviation" name="rank" required minlength="1" class="form-control">
                     <option *ngFor="let a of rank" [value]="a.abbreviation" [selected]="a.abbreviation == fireFighter.rank.abbreviation">{{a.abbreviation}}</option>
                 </select>
-                <div class="text-danger" *ngIf="form?.controls['rank'].hasError('minlength')">
+                <div class="text-danger" *ngIf="form?.controls['rank']?.hasError('minlength')">
                     Bitte wählen Sie einen Dienstgrad aus!
                 </div>
-                <div class="text-danger" *ngIf="form?.controls['rank'].hasError('required')">
+                <div class="text-danger" *ngIf="form?.controls['rank']?.hasError('required')">
                     Bitte wählen Sie einen Dienstgrad aus!
                 </div>
             </div>
@@ -67,10 +67,10 @@
                 <select [(ngModel)]="fireFighter.fireBrigade.name" name="fireBrigade" required minlength="1" class="form-control">
                     <option *ngFor="let a of fireBrigade" [value]="a.name" [selected]="a.name == fireFighter.fireBrigade.name">{{a.name}}</option>
                 </select>
-                <div class="text-danger" *ngIf="form?.controls['fireBrigade'].hasError('minlength')">
+                <div class="text-danger" *ngIf="form?.controls['fireBrigade']?.hasError('minlength')">
                     Bitte wählen Sie eine Feuerwehr aus!
                 </div>
-                <div class="text-danger" *ngIf="form?.controls['fireBrigade'].hasError('required')">
+                <div class="text-danger" *ngIf="form?.controls['fireBrigade']?.hasError('required')">
                     Bitte wählen Sie eine Feuerwehr aus!
                 </div>
             </div>
@@ -79,15 +79,15 @@
                 <select [(ngModel)]="fireFighter.fireFighterStatus.description" name="fireFighterStatus" required minlength="1" class="form-control">
                     <option *ngFor="let a of fireFighterStatus" [value]="a.description" [selected]="a.description == fireFighter.fireFighterStatus.description">{{a.description}}</option>
                 </select>
-                <div class="text-danger" *ngIf="form?.controls['fireFighterStatus'].hasError('minlength')">
+                <div class="text-danger" *ngIf="form?.controls['fireFighterStatus']?.hasError('minlength')">
                     Bitte wählen Sie einen Status aus!
                 </div>
-                <div class="text-danger" *ngIf="form?.controls['fireFighterStatus'].hasError('required')">
+                <div class="text-danger" *ngIf="form?.controls['fireFighterStatus']?.hasError('required')">
                     Bitte wählen Sie einen Status aus!
                 </div>
             </div>
             <div *ngIf="errors" class="alert alert-danger">{{errors}}</div>
-            <button *ngIf="fireFighter.id" class="btn btn-default" (click)="update()">Bearbeiten</button>
+            <button *ngIf="fireFighter.id" class="btn btn-default" (click)="update()">Speichern</button>
             <button *ngIf="!fireFighter.id" class="btn btn-default" (click)="create()">Hinzufügen</button>
 
         </form>

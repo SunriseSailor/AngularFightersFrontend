@@ -4,7 +4,7 @@
         <h1 class="title" *ngIf="!fireBrigade.id">Neue Feuerwehr erstellen</h1>
     </div>
     <div class="content">
-        <form *ngIf="fireBrigade">
+        <form *ngIf="fireBrigade" #form="ngForm">
 
             <div *ngIf="fireBrigade.id" class="form-group">
                 <label>ID:</label>
@@ -13,26 +13,53 @@
 
             <div class="form-group">
                 <label>Name:</label>
-                <input [(ngModel)]="fireBrigade.name" name="name" class="form-control">
+                <input [(ngModel)]="fireBrigade.name" name="name" class="form-control" required minlength="3">
+                <div class="text-danger" *ngIf="form?.controls['name']?.hasError('minlength')">
+                    Bitte geben Sie mindestens drei Zeichen ein!
+                </div>
+                <div class="text-danger" *ngIf="form?.controls['name']?.hasError('required')">
+                    Bitte füllen Sie dieses Feld aus!
+                </div>
             </div>
 
             <div class="form-group">
                 <label>Ort:</label>
-                <input [(ngModel)]="fireBrigade.postTown" name="postTown" class="form-control">
+                <input [(ngModel)]="fireBrigade.postTown" name="postTown" class="form-control" required minlength="4">
+                <div class="text-danger" *ngIf="form?.controls['postTown']?.hasError('minlength')">
+                    Bitte geben Sie mindestens drei Zeichen ein!
+                </div>
+                <div class="text-danger" *ngIf="form?.controls['postTown']?.hasError('required')">
+                    Bitte füllen Sie dieses Feld aus!
+                </div>
             </div>
 
             <div class="form-group">
                 <label>PLZ:</label>
-                <input [(ngModel)]="fireBrigade.postalCode" name="postalCode" class="form-control">
+                <input [(ngModel)]="fireBrigade.postalCode" name="postalCode" class="form-control" required minlength="4" maxlength="4">
+                <div class="text-danger" *ngIf="form?.controls['postalCode']?.hasError('minlength')">
+                    Bitte geben Sie eine korrekte PLZ ein!
+                </div>
+                <div class="text-danger" *ngIf="form?.controls['postalCode']?.hasError('maxlength')">
+                    Bitte geben Sie eine korrekte PLZ ein!
+                </div>
+                <div class="text-danger" *ngIf="form?.controls['postalCode']?.hasError('required')">
+                    Bitte füllen Sie dieses Feld aus!
+                </div>
             </div>
 
             <div class="form-group">
                 <label>Straße:</label>
-                <input [(ngModel)]="fireBrigade.streetName" name="streetName" class="form-control">
+                <input [(ngModel)]="fireBrigade.streetName" name="streetName" class="form-control" required minlength="3">
+                <div class="text-danger" *ngIf="form?.controls['streetName']?.hasError('minlength')">
+                    Bitte geben Sie mindestens drei Zeichen ein!
+                </div>
+                <div class="text-danger" *ngIf="form?.controls['streetName']?.hasError('required')">
+                    Bitte füllen Sie dieses Feld aus!
+                </div>
             </div>
 
             <div *ngIf="errors" class="alert alert-danger">{{errors}}</div>
-            <button *ngIf="fireBrigade.id" class="btn btn-default" (click)="update()">Bearbeiten</button>
+            <button *ngIf="fireBrigade.id" class="btn btn-default" (click)="update()">Speichern</button>
             <button *ngIf="!fireBrigade.id" class="btn btn-default" (click)="create()">Neu erstellen</button>
 
         </form>
