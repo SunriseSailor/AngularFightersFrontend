@@ -44,7 +44,7 @@
                 <label>Geburtsdatum:</label>
                 <input [(ngModel)]="fireFighter.dayOfBirth" name="dayOfBirth" class="form-control" required minlength="3">
                 <div class="text-danger" *ngIf="form?.controls['dayOfBirth']?.hasError('minlength')">
-                    Bitte geben Sie das Datum im folgenden Format ein: DD-MM-YYYY
+                    Bitte geben Sie das Datum im folgenden Format ein: YYYY-MM-DD
                 </div>
                 <div class="text-danger" *ngIf="form?.controls['dayOfBirth']?.hasError('required')">
                     Bitte füllen Sie dieses Feld aus!
