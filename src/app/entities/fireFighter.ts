@@ -8,7 +8,7 @@ export interface FireFighter{
     title: string;
     surname: string;
     name: string;
-    dayOfBirth: Date;
+    dayOfBirth: string;
     rank: Rank;
     fireBrigade: FireBrigade;
     fireFighterStatus: FireFighterStatus;

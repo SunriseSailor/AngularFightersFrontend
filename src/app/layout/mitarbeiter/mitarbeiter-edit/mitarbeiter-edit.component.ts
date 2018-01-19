@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit } from '@angular/core';
 import {FireFighter} from "../../../entities/fireFighter";
 import {FireFighterService} from "../mitarbeiter.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Rank} from "../../../entities/rank";
 import {FireBrigade} from "../../../entities/fireBrigade";
 import {FireFighterStatus} from "../../../entities/fireFighterStatus";
+import DateTimeFormat = Intl.DateTimeFormat;
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'mitarbeiter-edit',
@@ -15,9 +17,9 @@ export class MitarbeiterEditComponent implements OnInit {
 
     id: string;
     fireFighter: FireFighter;
-    rank: Rank;
-    fireBrigade: FireBrigade;
-    fireFighterStatus: FireFighterStatus;
+    rank: Rank[];
+    fireBrigade: FireBrigade[];
+    fireFighterStatus: FireFighterStatus[];
     errors: string;
   constructor(private fireFighterService: FireFighterService,
               private route: ActivatedRoute,
@@ -28,7 +30,6 @@ export class MitarbeiterEditComponent implements OnInit {
           params => {
               this.id = params['id'];
               if(this.id != null) {
-
                   this.fireFighterService.findById(this.id).subscribe(
                       fireFighter => {
                           this.fireFighter = fireFighter;
@@ -46,7 +47,7 @@ export class MitarbeiterEditComponent implements OnInit {
                       title:"",
                       surname:"",
                       name:"",
-                      dateOfBirth: Date,
+                      dayOfBirth: "",
                       rank:{
                           id: NaN,
                           description:"",

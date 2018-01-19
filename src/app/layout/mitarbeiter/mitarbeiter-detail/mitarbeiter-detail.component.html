@@ -12,9 +12,9 @@
                 <p>Familienname: {{fireFighter.surname}}</p>
                 <p>Vorname: {{fireFighter.name}}</p>
                 <p>Geburtsdatum: {{fireFighter.dayOfBirth | date: 'dd.MM.yyyy'}}</p>
-                <p>Dienstgrad: {{fireFighter.rank}}</p>
-                <p>Feuerwehr: {{fireFighter.fireBrigade}}</p>
-                <p>Status: {{fireFighter.fireFighterStatus}}</p>
+                <p>Dienstgrad: {{fireFighter.rank.abbreviation}}</p>
+                <p>Feuerwehr: {{fireFighter.fireBrigade.name}}</p>
+                <p>Status: {{fireFighter.fireFighterStatus.description}}</p>
                 <p>
                     <button class="btn btn-default" (click)="deleteDetail(fireFighter)">Löschen</button>
                     <a class="btn btn-default" [routerLink]="['/mitarbeiter/mitarbeiter-edit', fireFighter.id]">Bearbeiten</a>

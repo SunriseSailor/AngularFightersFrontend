@@ -21,10 +21,10 @@
                     <td>{{f.gender}}</td>
                     <td>{{f.title}}</td>
                     <td>{{f.surname}} {{f.name}}</td>
-                    <td>{{f.dayOfBirth | date: 'dd.MM.yyyy'}}</td>
-                    <td>{{f.rank}}</td>
-                    <td>{{f.fireBrigade}}</td>
-                    <td>{{f.fireFighterStatus}}</td>
+                    <td>{{f.dayOfBirth}}</td>
+                    <td>{{f.rank.abbreviation}}</td>
+                    <td>{{f.fireBrigade.name}}</td>
+                    <td>{{f.fireFighterStatus.description}}</td>
                     <td>
                         <a class="btn btn-default" (click)="select(f)"
                            [routerLink]="['/mitarbeiter/mitarbeiter-detail', f.id ]">
