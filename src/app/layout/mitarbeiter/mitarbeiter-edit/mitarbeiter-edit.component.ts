@@ -5,13 +5,13 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Rank} from "../../../entities/rank";
 import {FireBrigade} from "../../../entities/fireBrigade";
 import {FireFighterStatus} from "../../../entities/fireFighterStatus";
-import DateTimeFormat = Intl.DateTimeFormat;
-import {DatePipe} from "@angular/common";
+import {routerTransition} from "../../../router.animations";
 
 @Component({
   selector: 'mitarbeiter-edit',
   templateUrl: './mitarbeiter-edit.component.html',
-  styleUrls: ['./mitarbeiter-edit.component.scss']
+  styleUrls: ['./mitarbeiter-edit.component.scss'],
+  animations: [routerTransition()]
 })
 export class MitarbeiterEditComponent implements OnInit {
 
