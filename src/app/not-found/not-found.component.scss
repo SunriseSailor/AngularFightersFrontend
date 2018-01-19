@@ -2,7 +2,7 @@
     transition: color .2s linear;
     font-size: 50px;
     line-height: 60px;
-    color: rgba(255,255,255,1);
+    color: #dddddd;
     letter-spacing: -1px;
     margin-bottom: 5px;
     text-align: center;
@@ -11,7 +11,7 @@
     transition: color .2s linear;
     font-size: 38px;
     line-height: 46px;
-    color: #fff;
+    color: #dddddd;
     text-align: center;
 }
 .plain.error-page-wrapper hr {
@@ -26,7 +26,7 @@
     transition: color .2s linear;
     font-size: 20px;
     line-height: 27px;
-    color: #fff;
+    color: #dddddd;
 }
 .plain.error-page-wrapper .context p {
     margin: 0;
@@ -39,7 +39,7 @@
     font-size: 18px;
     text-transform: uppercase;
     text-decoration: none;
-    color: #fff;
+    color: #ededed;
     border: 2px solid white;
     border-radius: 99px;
     padding: 8px 30px 9px;
@@ -47,30 +47,35 @@
 }
 
 html, body {
+    background: url("fire.jpg");
     height: 100vh !important;
-    //background: url("fire.jpg");
     background-size: cover;
+    text-align: center;
 }
 .primary-text-color {
-    color: #FFFFFF !important;
+    color: #dddddd !important;
 }
 .secondary-text-color {
     color: rgba(255, 255, 255, 1);
 }
 .border-button {
-    color: #FFFFFF !important;
-    border-color: #FFFFFF !important;
+    color: #dddddd !important;
+    border-color: #dddddd !important;
 }
 .button {
-    background-color: #FFFFFF !important;
-    color: #FFFFFF !important;
+    color: #dddddd !important;
 
 }
 .shadow {
     box-shadow: 0 0 60px #000000;
 }
 .content-container {
-    padding-top: 10%
+    padding-top: 10%;
 }
+buttons-container{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 
+}
 
