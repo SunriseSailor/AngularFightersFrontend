@@ -1,11 +1,11 @@
 <div [@routerTransition]>
-    <h1>Fahrzeugbezeichnung | <a [routerLink]="['/fahrzeugbezeichnung/fahrzeugbezeichnung-edit']">Neue Fahrzeugbezeichnung hinzufügen</a></h1><br><br>
+    <h1>Fahrzeugbezeichnungen | <a [routerLink]="['/fahrzeugbezeichnung/fahrzeugbezeichnung-edit']">Neue Fahrzeugbezeichnung hinzufügen</a></h1><br><br>
     <div class="row">
         <div class="col-md-12">
             <table class="table table-condensed" *ngIf="fireEngineAbbreviations.length > 0">
                 <thead>
                 <tr>
-                    <th>id</th>
+                    <th>ID</th>
                     <th>Abkürzung</th>
                     <th>Mindestnutzung</th>
                     <th>Beschreibung</th>
@@ -13,10 +13,10 @@
                 </tr>
                 </thead>
                 <tr *ngFor="let b of fireEngineAbbreviations">
-                    <td>{{b.id }}</td>
-                    <td>{{b.abbreviation }}</td>
-                    <td>{{b.operatingLife }}</td>
-                    <td>{{b.description }}</td>
+                    <td>{{b.id}}</td>
+                    <td>{{b.abbreviation}}</td>
+                    <td>{{b.operatingLife}}</td>
+                    <td>{{b.description}}</td>
                     <td><a class="btn btn-default" (click)="select(b)" [routerLink]="['/fahrzeugbezeichnung/fahrzeugbezeichnung-detail', b.id ]">Auswählen</a></td>
                 </tr>
             </table>

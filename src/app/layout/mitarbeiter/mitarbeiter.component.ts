@@ -15,6 +15,7 @@ export class MitarbeiterComponent implements OnInit {
 
     fireFighters: Array<FireFighter> = [];
     fireBrigades: FireBrigade[];
+    fireBrigadeId: number;
     selectedFireFighter: FireFighter;
     filtered: boolean = false;
 
@@ -41,4 +42,12 @@ export class MitarbeiterComponent implements OnInit {
             .catch(err => console.log(err));
         this.filtered = false;
     }
+
+    filterByFireBrigade(fireBrigadeId: number):void {
+        this.fireFighterService.findByFireBrigadeId(fireBrigadeId.toString())
+            .then(fireFighters => this.fireFighters = fireFighters)
+            .catch(err => console.log(err));
+        this.filtered = true;
+    }
+
 }

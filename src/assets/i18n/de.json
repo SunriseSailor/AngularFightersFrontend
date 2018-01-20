@@ -30,13 +30,12 @@
     "Mail" : "Post",
     "View All" : "Alle Anzeigen",
     "Employees": "Mitarbeiter",
-    "Rank": "Dienstgrade",
-    "Firebrigade": "Feuerwehr",
+    "Ranks": "Dienstgrade",
+    "Firebrigades": "Feuerwehren",
     "Status": "Status",
-    "Vehicle": "Fahrzeuge",
-    "FireFighter Status": "Status",
-    "Vehicle Name": "KFZ-Bezeichnung",
+    "Vehicles": "Fahrzeuge",
+    "Vehicle Names": "KFZ-Bezeichnungen",
     "Volunteer Firebrigade": "Freiwillige Feuerwehr",
     "Overview": "Übersicht",
-    "Statistics": "Statistik"
+    "Statistics": "Statistiken"
 }

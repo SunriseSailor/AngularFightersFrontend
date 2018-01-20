@@ -2,6 +2,18 @@
     <h1>Mitarbeiter | <a [routerLink]="['/mitarbeiter/mitarbeiter-edit']">Neuen Mitarbeiter hinzufügen</a></h1><br><br>
     <div class="row">
         <div class="col-md-12">
+            <form class="form-group">
+                <div class="form-group">
+                    <label>Filtern nach Feuerwehr:</label>
+                    <select [(ngModel)]="fireBrigadeId" name="fireBrigadeId" class="form-control">
+                        <option *ngFor="let f of fireBrigades" [value]="f.id" >{{f.name}}</option>
+                    </select>
+                </div>
+                <button class="btn btn-default" (click)="filterByFireBrigade(fireBrigadeId)">Filtern!</button>
+                <button *ngIf="filtered" class="btn btn-default" (click)="showAllFireFighters()">Filter aufheben</button>
+            </form>
+        </div>
+        <div class="col-md-12">
             <table class="table table-condensed" *ngIf="fireFighters.length > 0">
                 <thead>
                 <tr>
@@ -19,8 +31,7 @@
                 <tr *ngFor="let f of fireFighters">
                     <td>{{f.id}}</td>
                     <td>{{f.gender}}</td>
-                    <td>{{f.title}}</td>
-                    <td>{{f.surname}} {{f.name}}</td>
+                    <td>{{f.title}}</td><td>{{f.surname}} {{f.name}}</td>
                     <td>{{f.dayOfBirth}}</td>
                     <td>{{f.rank.abbreviation}}</td>
                     <td>{{f.fireBrigade.name}}</td>

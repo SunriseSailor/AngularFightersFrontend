@@ -47,7 +47,7 @@
                 <div class="text-danger" *ngIf="form?.controls['performance']?.hasError('required')">
                     Bitte füllen Sie dieses Feld aus!
                 </div>
-                <div class="text-danger" *ngIf="form?.controls['performance'].hasError('pattern')">
+                <div class="text-danger" *ngIf="form?.controls['performance']?.hasError('pattern')">
                     Bitte geben Sie nur Zahlen ein!
                 </div>
             </div>
@@ -64,7 +64,7 @@
                 <div class="text-danger" *ngIf="form?.controls['buildYear']?.hasError('required')">
                     Bitte füllen Sie dieses Feld aus!
                 </div>
-                <div class="text-danger" *ngIf="form?.controls['buildYear'].hasError('pattern')">
+                <div class="text-danger" *ngIf="form?.controls['buildYear']?.hasError('pattern')">
                     Bitte geben Sie nur Zahlen ein!
                 </div>
             </div>

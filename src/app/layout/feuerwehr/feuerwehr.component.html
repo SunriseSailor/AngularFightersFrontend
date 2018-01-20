@@ -1,5 +1,5 @@
 <div [@routerTransition]>
-    <h1>Feuerwehr | <a [routerLink]="['/feuerwehr/feuerwehr-edit']">Neue Feuerwehr erstellen</a></h1><br><br>
+    <h1>Feuerwehren | <a [routerLink]="['/feuerwehr/feuerwehr-edit']">Neue Feuerwehr erstellen</a></h1><br><br>
     <div class="row">
         <div class="col-md-12">
             <table class="table table-condensed" *ngIf="fireBrigades.length > 0">
@@ -15,9 +15,9 @@
                 </thead>
                 <tr *ngFor="let f of fireBrigades">
                     <td>{{f.id}}</td>
-                    <td>{{f.name }}</td>
-                    <td>{{f.streetName }}</td>
-                    <td>{{f.postalCode }}</td>
+                    <td>{{f.name}}</td>
+                    <td>{{f.streetName}}</td>
+                    <td>{{f.postalCode}}</td>
                     <td>{{f.postTown}} </td>
                     <td>
                         <a class="btn btn-default" (click)="select(f)"

@@ -14,7 +14,7 @@ export class FireFighterService {
     }
 
     findAll(): Promise<FireFighter[]> {
-        let url = 'http://localhost:8080/fireFighters?projection=all&size=100';
+        let url = 'http://localhost:8080/fireFighters?projection=all&size=500';
         let headers = new HttpHeaders().set('Accept', 'application/json');
         return this.http.get<Array<FireFighter>>(url, {headers}).toPromise().then(fireFighters => fireFighters['_embedded']['fireFighters'])
     }
@@ -50,8 +50,8 @@ export class FireFighterService {
         const headers = new HttpHeaders()
             .set('Accept', 'application/json');
         let params = new HttpParams() .set('id', fireBrigadeId);
-        return this.http.get<Array<FireFighter>>(url, {headers,params}).toPromise().then(fireFighters => fireFighters['_embedded']['fireFighters'])
-
+        return this.http.get<Array<FireFighter>>(url, {headers,params})
+            .toPromise().then(fireFighters => fireFighters['_embedded']['fireFighters'])
     }
 
     createFireFighter(fireFighter: FireFighter): Observable<FireFighter> {
@@ -141,14 +141,14 @@ export class FireFighterService {
                 console.log("Error creating FireFighter.")
             }
         );
-
     }
 
     updateFireFighter(fireFighter: FireFighter): Observable<FireFighter> {
         let url = 'http://localhost:8080/fireFighters/'+fireFighter.id;
         let headers = new HttpHeaders().set('Accept', 'application/json');
-        //fireFighter.abbreviation = null;
-        fireFighter.fireBrigade = null;
+        //fireFighter.rank = null;
+        //fireFighter.fireBrigade = null;
+        //fireFighter.fireFighterStatus = null;
         return this.http.put<FireFighter>(url, fireFighter, { headers });
 
     }

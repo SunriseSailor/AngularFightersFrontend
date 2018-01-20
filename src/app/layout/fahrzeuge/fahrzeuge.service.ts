@@ -13,7 +13,7 @@ export class FireEngineService {
     }
 
     findAll(): Promise<FireEngine[]> {
-        let url = 'http://localhost:8080/fireEngines?projection=all&size=100';
+        let url = 'http://localhost:8080/fireEngines?projection=all&size=500';
         let headers = new HttpHeaders().set('Accept', 'application/json');
         return this.http.get<Array<FireEngine>>(url, {headers}).toPromise().then(fireEngines => fireEngines['_embedded']['fireEngines'])
     }
@@ -25,9 +25,10 @@ export class FireEngineService {
     }
 
     findAllFireEngineAbbreviations(): Promise<FireEngineAbbreviation[]> {
-        let url = 'http://localhost:8080/fireEngineAbbreviations?size=41';
+        let url = 'http://localhost:8080/fireEngineAbbreviations?size=100';
         let headers = new HttpHeaders().set('Accept', 'application/json');
-        return this.http.get<Array<FireEngineAbbreviation>>(url, {headers}).toPromise().then(fireEngineAbbreviations => fireEngineAbbreviations['_embedded']['fireEngineAbbreviations'])
+        return this.http.get<Array<FireEngineAbbreviation>>(url, {headers})
+            .toPromise().then(fireEngineAbbreviations => fireEngineAbbreviations['_embedded']['fireEngineAbbreviations'])
     }
 
     findById(id: string): Observable<FireEngine> {
@@ -42,10 +43,9 @@ export class FireEngineService {
         const headers = new HttpHeaders()
             .set('Accept', 'application/json');
         let params = new HttpParams() .set('id', fireBrigadeId);
-        return this.http.get<Array<FireEngine>>(url, {headers,params}).toPromise().then(fireEngines => fireEngines['_embedded']['fireEngines'])
-
+        return this.http.get<Array<FireEngine>>(url, {headers,params})
+            .toPromise().then(fireEngines => fireEngines['_embedded']['fireEngines'])
     }
-
 
     createFireEngine(fireEngine: FireEngine): Observable<FireEngine> {
         let url = 'http://localhost:8080/fireEngines';

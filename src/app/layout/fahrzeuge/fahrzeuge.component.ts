@@ -62,9 +62,6 @@ export class FahrzeugeComponent implements OnInit {
             .then(fireEngines => this.fireEngines = fireEngines)
             .catch(err => console.log(err));
         this.filtered = true;
-
     }
-
-
 
 }
