@@ -14,39 +14,39 @@ export class FireFighterService {
     }
 
     findAll(): Promise<FireFighter[]> {
-        let url = 'http://localhost:8080/fireFighters?projection=all&size=500';
+        let url = 'https://localhost:8080/fireFighters?projection=all&size=500';
         let headers = new HttpHeaders().set('Accept', 'application/json');
         return this.http.get<Array<FireFighter>>(url, {headers}).toPromise().then(fireFighters => fireFighters['_embedded']['fireFighters'])
     }
 
     findAllRanks(): Promise<Rank[]> {
-        let url = 'http://localhost:8080/ranks?size=500';
+        let url = 'https://localhost:8080/ranks?size=500';
         let headers = new HttpHeaders().set('Accept', 'application/json');
         return this.http.get<Array<Rank>>(url, {headers}).toPromise().then(ranks => ranks['_embedded']['ranks'])
     }
 
     findAllFireBrigades(): Promise<FireBrigade[]> {
-        let url = 'http://localhost:8080/fireBrigades';
+        let url = 'https://localhost:8080/fireBrigades';
         let headers = new HttpHeaders().set('Accept', 'application/json');
         return this.http.get<Array<FireBrigade>>(url, {headers}).toPromise().then(fireBrigades => fireBrigades['_embedded']['fireBrigades'])
     }
 
     findAllFireFighterStatuses(): Promise<FireFighterStatus[]> {
-        let url = 'http://localhost:8080/fireFighterStatuses';
+        let url = 'https://localhost:8080/fireFighterStatuses';
         let headers = new HttpHeaders().set('Accept', 'application/json');
         return this.http.get<Array<FireFighterStatus>>(url, {headers})
             .toPromise().then(fireFighterStatuses => fireFighterStatuses['_embedded']['fireFighterStatuses'])
     }
 
     findById(id: string): Observable<FireFighter> {
-        const url = 'http://localhost:8080/fireFighters/'+id+'?projection=all';
+        const url = 'https://localhost:8080/fireFighters/'+id+'?projection=all';
         const headers = new HttpHeaders()
             .set('Accept', 'application/json');
         return this.http.get<FireFighter>(url, {headers});
     }
 
     findByFireBrigadeId(fireBrigadeId: string): Promise<FireFighter[]> {
-        const url = 'http://localhost:8080/fireFighters/search/findByFireBrigade_Id?projection=all';
+        const url = 'https://localhost:8080/fireFighters/search/findByFireBrigade_Id?projection=all';
         const headers = new HttpHeaders()
             .set('Accept', 'application/json');
         let params = new HttpParams() .set('id', fireBrigadeId);
@@ -55,7 +55,7 @@ export class FireFighterService {
     }
 
     createFireFighter(fireFighter: FireFighter): Observable<FireFighter> {
-        let url = 'http://localhost:8080/fireFighters';
+        let url = 'https://localhost:8080/fireFighters';
         let headers = new HttpHeaders().set('Accept', 'application/json').set('Content-Type', 'application/json');
         return this.http.post<FireFighter>(url, fireFighter, { headers });
     }
@@ -68,6 +68,9 @@ export class FireFighterService {
             surname: fireFighter.surname,
             name: fireFighter.name,
             dayOfBirth: fireFighter.dayOfBirth,
+            streetName:fireFighter.streetName,
+            postalCode:fireFighter.postalCode,
+            postTown:fireFighter.postTown,
             rank: {
                 id: NaN,
                 description: "",
@@ -126,6 +129,7 @@ export class FireFighterService {
                                     fireFighterStatus => {
                                         fireFighter.fireFighterStatus = fireFighterStatus;
                                         console.log("Fire Fighter Status was added");
+                                        this.router.navigate(['/mitarbeiter'])
                                         },
                                         err => {
                                             console.log("Fire Fighter Status was not added")});
@@ -144,7 +148,7 @@ export class FireFighterService {
     }
 
     updateFireFighter(fireFighter: FireFighter): Observable<FireFighter> {
-        let url = 'http://localhost:8080/fireFighters/'+fireFighter.id;
+        let url = 'https://localhost:8080/fireFighters/'+fireFighter.id;
         let headers = new HttpHeaders().set('Accept', 'application/json');
         //fireFighter.rank = null;
         //fireFighter.fireBrigade = null;
@@ -154,23 +158,23 @@ export class FireFighterService {
     }
 
      updateFireFighterRank(fireFighter: FireFighter): Observable<Rank> {
-        let url = 'http://localhost:8080/fireFighters/'+fireFighter.id+'/rank';
+        let url = 'https://localhost:8080/fireFighters/'+fireFighter.id+'/rank';
         let headers = new HttpHeaders().set('Content-Type', 'text/uri-list');
-        let changeUrl = 'http://localhost:8080/ranks/'+ fireFighter.rank.id;
+        let changeUrl = 'https://localhost:8080/ranks/'+ fireFighter.rank.id;
         return this.http.put<Rank>(url, changeUrl, { headers });
     }
 
     updateFireFighterFireBrigade(fireFighter: FireFighter): Observable<FireBrigade> {
-        let url = 'http://localhost:8080/fireFighters/'+fireFighter.id+'/fireBrigade';
+        let url = 'https://localhost:8080/fireFighters/'+fireFighter.id+'/fireBrigade';
         let headers = new HttpHeaders().set('Content-Type', 'text/uri-list');
-        let changeUrl = 'http://localhost:8080/fireBrigades/'+ fireFighter.fireBrigade.id;
+        let changeUrl = 'https://localhost:8080/fireBrigades/'+ fireFighter.fireBrigade.id;
         return this.http.put<FireBrigade>(url, changeUrl, { headers });
     }
 
     updateFireFighterFireFighterStatus(fireFighter: FireFighter): Observable<FireFighterStatus> {
-        let url = 'http://localhost:8080/fireFighters/'+fireFighter.id+'/fireFighterStatus';
+        let url = 'https://localhost:8080/fireFighters/'+fireFighter.id+'/fireFighterStatus';
         let headers = new HttpHeaders().set('Content-Type', 'text/uri-list');
-        let changeUrl = 'http://localhost:8080/fireFighterStatuses/'+ fireFighter.fireFighterStatus.id
+        let changeUrl = 'https://localhost:8080/fireFighterStatuses/'+ fireFighter.fireFighterStatus.id
         return this.http.put<FireFighterStatus>(url, changeUrl, { headers });
     }
 
@@ -216,7 +220,7 @@ export class FireFighterService {
     }
 
     deleteFireFighter(id:string): Observable<FireFighter> {
-        let url = 'http://localhost:8080/fireFighters/'+id;
+        let url = 'https://localhost:8080/fireFighters/'+id;
         let headers = new HttpHeaders().set('Accept', 'application/json');
         return this.http.delete<FireFighter>(url, { headers });
     }

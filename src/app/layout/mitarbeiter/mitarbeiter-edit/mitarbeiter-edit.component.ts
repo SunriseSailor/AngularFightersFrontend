@@ -47,6 +47,9 @@ export class MitarbeiterEditComponent implements OnInit {
                       surname:"",
                       name:"",
                       dayOfBirth:"",
+                      streetName:"",
+                      postalCode:"",
+                      postTown:"",
                       rank:{
                           id: NaN,
                           description:"",

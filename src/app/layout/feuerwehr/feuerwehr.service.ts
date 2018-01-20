@@ -11,33 +11,33 @@ export class FireBrigadeService {
     constructor(private http: HttpClient, private router: Router) { }
 
     findAll(): Promise<FireBrigade[]> {
-        let url = 'http://localhost:8080/fireBrigades?size=100';
+        let url = 'https://localhost:8080/fireBrigades?size=100';
         let headers = new HttpHeaders().set('Accept', 'application/json');
         return this.http.get<Array<FireBrigade>>(url, {headers})
             .toPromise().then(fireBrigades => fireBrigades['_embedded']['fireBrigades']);
     }
 
     findById(id: string): Observable<FireBrigade> {
-        const url = 'http://localhost:8080/fireBrigades/' + id;
+        const url = 'https://localhost:8080/fireBrigades/' + id;
         const headers = new HttpHeaders()
             .set('Accept', 'application/json');
         return this.http.get<FireBrigade>(url, {headers});
     }
 
     createFireBrigade(fireBrigade: FireBrigade): Observable<FireBrigade> {
-        let url = 'http://localhost:8080/fireBrigades';
+        let url = 'https://localhost:8080/fireBrigades';
         let headers = new HttpHeaders().set('Accept', 'application/json').set('Content-Type', 'application/json');
         return this.http.post<FireBrigade>(url, fireBrigade, { headers });
     }
 
     updateFireBrigade(fireBrigade: FireBrigade): Observable<FireBrigade> {
-        let url = 'http://localhost:8080/fireBrigades/' + fireBrigade.id;
+        let url = 'https://localhost:8080/fireBrigades/' + fireBrigade.id;
         let headers = new HttpHeaders().set('Accept', 'application/json');
         return this.http.put<FireBrigade>(url, fireBrigade, { headers });
     }
 
     deleteFireBrigade(id: string): Observable<FireBrigade> {
-        let url = 'http://localhost:8080/fireBrigades/' + id;
+        let url = 'https://localhost:8080/fireBrigades/' + id;
         let headers = new HttpHeaders().set('Accept', 'application/json');
         return this.http.delete<FireBrigade>(url, { headers });
     }

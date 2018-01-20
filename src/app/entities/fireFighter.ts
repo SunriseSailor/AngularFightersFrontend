@@ -9,6 +9,9 @@ export interface FireFighter{
     surname: string;
     name: string;
     dayOfBirth: string;
+    streetName: string;
+    postalCode: string;
+    postTown: string;
     rank: Rank;
     fireBrigade: FireBrigade;
     fireFighterStatus: FireFighterStatus;

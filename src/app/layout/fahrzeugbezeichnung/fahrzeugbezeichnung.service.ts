@@ -10,29 +10,29 @@ export class FireEngineAbbreviationService {
     constructor(private http: HttpClient, private router: Router) { }
 
     findAll(): Promise<FireEngineAbbreviation[]> {
-        let url = 'http://localhost:8080/fireEngineAbbreviations?size=500';
+        let url = 'https://localhost:8080/fireEngineAbbreviations?size=500';
         let headers = new HttpHeaders().set('Accept', 'application/json');
         return this.http.get<Array<FireEngineAbbreviation>>(url, {headers})
             .toPromise().then(fireEngineAbbreviations => fireEngineAbbreviations['_embedded']['fireEngineAbbreviations']);
     }
     findById(id: string): Observable<FireEngineAbbreviation> {
-        const url = 'http://localhost:8080/fireEngineAbbreviations/' + id;
+        const url = 'https://localhost:8080/fireEngineAbbreviations/' + id;
         const headers = new HttpHeaders()
             .set('Accept', 'application/json');
         return this.http.get<FireEngineAbbreviation>(url, {headers});
     }
     createFireEngineAbbreviation(fireEngineAbbreviation: FireEngineAbbreviation): Observable<FireEngineAbbreviation> {
-        let url = 'http://localhost:8080/fireEngineAbbreviations';
+        let url = 'https://localhost:8080/fireEngineAbbreviations';
         let headers = new HttpHeaders().set('Accept', 'application/json').set('Content-Type', 'application/json');
         return this.http.post<FireEngineAbbreviation>(url, fireEngineAbbreviation, { headers });
     }
     updateFireEngineAbbreviation(fireEngineAbbreviation: FireEngineAbbreviation): Observable<FireEngineAbbreviation> {
-        let url = 'http://localhost:8080/fireEngineAbbreviations/' + fireEngineAbbreviation.id;
+        let url = 'https://localhost:8080/fireEngineAbbreviations/' + fireEngineAbbreviation.id;
         let headers = new HttpHeaders().set('Accept', 'application/json');
         return this.http.put<FireEngineAbbreviation>(url, fireEngineAbbreviation, { headers });
     }
     deleteFireEngineAbbreviation(id: string): Observable<FireEngineAbbreviation> {
-        let url = 'http://localhost:8080/fireEngineAbbreviations/' + id;
+        let url = 'https://localhost:8080/fireEngineAbbreviations/' + id;
         let headers = new HttpHeaders().set('Accept', 'application/json');
         return this.http.delete<FireEngineAbbreviation>(url, { headers });
     }

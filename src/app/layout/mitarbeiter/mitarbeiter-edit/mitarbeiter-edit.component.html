@@ -51,9 +51,44 @@
                 </div>
             </div>
             <div class="form-group">
+                <label>Ort:</label>
+                <input [(ngModel)]="fireFighter.postTown" name="postTown" class="form-control" required minlength="4">
+                <div class="text-danger" *ngIf="form?.controls['postTown']?.hasError('minlength')">
+                    Bitte geben Sie mindestens drei Zeichen ein!
+                </div>
+                <div class="text-danger" *ngIf="form?.controls['postTown']?.hasError('required')">
+                    Bitte füllen Sie dieses Feld aus!
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>PLZ:</label>
+                <input [(ngModel)]="fireFighter.postalCode" name="postalCode" class="form-control" pattern="^(\d*)$" required minlength="4" maxlength="4">
+                <div class="text-danger" *ngIf="form?.controls['postalCode']?.hasError('minlength')">
+                    Bitte geben Sie eine korrekte PLZ ein!
+                </div>
+                <div class="text-danger" *ngIf="form?.controls['postalCode']?.hasError('maxlength')">
+                    Bitte geben Sie eine korrekte PLZ ein!
+                </div>
+                <div class="text-danger" *ngIf="form?.controls['postalCode']?.hasError('required')">
+                    Bitte füllen Sie dieses Feld aus!
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Straße:</label>
+                <input [(ngModel)]="fireFighter.streetName" name="streetName" class="form-control" required minlength="3">
+                <div class="text-danger" *ngIf="form?.controls['streetName']?.hasError('minlength')">
+                    Bitte geben Sie mindestens drei Zeichen ein!
+                </div>
+                <div class="text-danger" *ngIf="form?.controls['streetName']?.hasError('required')">
+                    Bitte füllen Sie dieses Feld aus!
+                </div>
+            </div>
+            <div class="form-group">
                 <label>Dienstgrad:</label>
-                <select [(ngModel)]="fireFighter.rank.abbreviation" name="rank" required minlength="1" class="form-control">
-                    <option *ngFor="let a of rank" [value]="a.abbreviation" [selected]="a.abbreviation == fireFighter.rank.abbreviation">{{a.abbreviation}}</option>
+                <select [(ngModel)]="fireFighter.rank.id" name="rank" required minlength="1" class="form-control">
+                    <option *ngFor="let a of rank" [value]="a.id" [selected]="a.id == fireFighter.rank.id">{{a.abbreviation}}</option>
                 </select>
                 <div class="text-danger" *ngIf="form?.controls['rank']?.hasError('minlength')">
                     Bitte wählen Sie einen Dienstgrad aus!
@@ -64,8 +99,8 @@
             </div>
             <div class="form-group">
                 <label>Feuerwehr:</label>
-                <select [(ngModel)]="fireFighter.fireBrigade.name" name="fireBrigade" required minlength="1" class="form-control">
-                    <option *ngFor="let a of fireBrigade" [value]="a.name" [selected]="a.name == fireFighter.fireBrigade.name">{{a.name}}</option>
+                <select [(ngModel)]="fireFighter.fireBrigade.id" name="fireBrigade" required minlength="1" class="form-control">
+                    <option *ngFor="let a of fireBrigade" [value]="a.id" [selected]="a.id == fireFighter.fireBrigade.id">{{a.name}}</option>
                 </select>
                 <div class="text-danger" *ngIf="form?.controls['fireBrigade']?.hasError('minlength')">
                     Bitte wählen Sie eine Feuerwehr aus!
@@ -76,8 +111,8 @@
             </div>
             <div class="form-group">
                 <label>Status:</label>
-                <select [(ngModel)]="fireFighter.fireFighterStatus.description" name="fireFighterStatus" required minlength="1" class="form-control">
-                    <option *ngFor="let a of fireFighterStatus" [value]="a.description" [selected]="a.description == fireFighter.fireFighterStatus.description">{{a.description}}</option>
+                <select [(ngModel)]="fireFighter.fireFighterStatus.id" name="fireFighterStatus" required minlength="1" class="form-control">
+                    <option *ngFor="let a of fireFighterStatus" [value]="a.id" [selected]="a.id == fireFighter.fireFighterStatus.id">{{a.description}}</option>
                 </select>
                 <div class="text-danger" *ngIf="form?.controls['fireFighterStatus']?.hasError('minlength')">
                     Bitte wählen Sie einen Status aus!
@@ -93,5 +128,7 @@
         </form>
     </div>
 </div>
+
+<pre>{{fireFighter | json}}</pre>
 <div class="col-md-12"><a class="btn btn-default" [routerLink]="['/mitarbeiter']">Zurück zur Übersicht</a>
 </div>

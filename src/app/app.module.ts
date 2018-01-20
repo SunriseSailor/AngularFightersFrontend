@@ -15,7 +15,8 @@ import {FireFighterService} from "./layout/mitarbeiter/mitarbeiter.service";
 import {FireEngineAbbreviationService} from "./layout/fahrzeugbezeichnung/fahrzeugbezeichnung.service";
 import {FireFighterStatusService} from "./layout/status/status.service";
 import {RankService} from "./layout/dienstgrade/dienstgrade.service";
-
+import { OAuthModule } from 'angular-oauth2-oidc';
+import {AppService} from "./app.service";
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -38,10 +39,21 @@ export function createTranslateLoader(http: HttpClient) {
                 deps: [HttpClient]
             }
         }),
-        AppRoutingModule
+        AppRoutingModule,
+
+        OAuthModule.forRoot({
+                resourceServer: {
+                allowedUrls: ['https://localhost:8080'],
+                sendAccessToken: true
+
+            }
+        })
+
+
+
     ],
     declarations: [AppComponent],
-    providers: [AuthGuard, RankService, FireEngineAbbreviationService, FireEngineService, FireBrigadeService, FireFighterService,  FireFighterStatusService],
+    providers: [AuthGuard, AppService, RankService, FireEngineAbbreviationService, FireEngineService, FireBrigadeService, FireFighterService,  FireFighterStatusService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

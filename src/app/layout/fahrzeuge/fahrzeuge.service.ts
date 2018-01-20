@@ -13,33 +13,33 @@ export class FireEngineService {
     }
 
     findAll(): Promise<FireEngine[]> {
-        let url = 'http://localhost:8080/fireEngines?projection=all&size=500';
+        let url = 'https://localhost:8080/fireEngines?projection=all&size=100';
         let headers = new HttpHeaders().set('Accept', 'application/json');
         return this.http.get<Array<FireEngine>>(url, {headers}).toPromise().then(fireEngines => fireEngines['_embedded']['fireEngines'])
     }
 
     findAllFireBrigades(): Promise<FireBrigade[]> {
-        let url = 'http://localhost:8080/fireBrigades';
+        let url = 'https://localhost:8080/fireBrigades';
         let headers = new HttpHeaders().set('Accept', 'application/json');
         return this.http.get<Array<FireBrigade>>(url, {headers}).toPromise().then(fireBrigades => fireBrigades['_embedded']['fireBrigades'])
     }
 
     findAllFireEngineAbbreviations(): Promise<FireEngineAbbreviation[]> {
-        let url = 'http://localhost:8080/fireEngineAbbreviations?size=100';
+        let url = 'https://localhost:8080/fireEngineAbbreviations?size=41';
         let headers = new HttpHeaders().set('Accept', 'application/json');
         return this.http.get<Array<FireEngineAbbreviation>>(url, {headers})
             .toPromise().then(fireEngineAbbreviations => fireEngineAbbreviations['_embedded']['fireEngineAbbreviations'])
     }
 
     findById(id: string): Observable<FireEngine> {
-        const url = 'http://localhost:8080/fireEngines/'+id+'?projection=all';
+        const url = 'https://localhost:8080/fireEngines/'+id+'?projection=all';
         const headers = new HttpHeaders()
             .set('Accept', 'application/json');
         return this.http.get<FireEngine>(url, {headers});
     }
 
     findByFireBrigadeId(fireBrigadeId: string): Promise<FireEngine[]> {
-        const url = 'http://localhost:8080/fireEngines/search/findByFireBrigade_Id?projection=all';
+        const url = 'https://localhost:8080/fireEngines/search/findByFireBrigade_Id?projection=all';
         const headers = new HttpHeaders()
             .set('Accept', 'application/json');
         let params = new HttpParams() .set('id', fireBrigadeId);
@@ -48,7 +48,7 @@ export class FireEngineService {
     }
 
     createFireEngine(fireEngine: FireEngine): Observable<FireEngine> {
-        let url = 'http://localhost:8080/fireEngines';
+        let url = 'https://localhost:8080/fireEngines';
         let headers = new HttpHeaders().set('Accept', 'application/json').set('Content-Type', 'application/json');
         return this.http.post<FireEngine>(url, fireEngine, { headers });
     }
@@ -132,7 +132,7 @@ export class FireEngineService {
 
 
     updateFireEngine(fireEngine: FireEngine): Observable<FireEngine> {
-        let url = 'http://localhost:8080/fireEngines/'+fireEngine.id;
+        let url = 'https://localhost:8080/fireEngines/'+fireEngine.id;
         let headers = new HttpHeaders().set('Accept', 'application/json');
         fireEngine.abbreviation = null;
         fireEngine.fireBrigade = null;
@@ -141,16 +141,16 @@ export class FireEngineService {
     }
 
     updateFireEngineFireBrigade(fireEngine: FireEngine): Observable<FireBrigade> {
-        let url = 'http://localhost:8080/fireEngines/'+fireEngine.id+'/fireBrigade';
+        let url = 'https://localhost:8080/fireEngines/'+fireEngine.id+'/fireBrigade';
         let headers = new HttpHeaders().set('Content-Type', 'text/uri-list');
-        let changeUrl = 'http://localhost:8080/fireBrigades/'+ fireEngine.fireBrigade.id;
+        let changeUrl = 'https://localhost:8080/fireBrigades/'+ fireEngine.fireBrigade.id;
         return this.http.put<FireBrigade>(url, changeUrl, { headers });
     }
 
     updateFireEngineAbbreviation(fireEngine: FireEngine): Observable<FireEngineAbbreviation> {
-        let url = 'http://localhost:8080/fireEngines/'+fireEngine.id+'/abbreviation';
+        let url = 'https://localhost:8080/fireEngines/'+fireEngine.id+'/abbreviation';
         let headers = new HttpHeaders().set('Content-Type', 'text/uri-list');
-        let changeUrl = 'http://localhost:8080/fireEngineAbbreviations/'+ fireEngine.abbreviation.id
+        let changeUrl = 'https://localhost:8080/fireEngineAbbreviations/'+ fireEngine.abbreviation.id
         return this.http.put<FireEngineAbbreviation>(url, changeUrl, { headers });
     }
 
@@ -190,7 +190,7 @@ export class FireEngineService {
 
 
     deleteFireEngine(id:string): Observable<FireEngine> {
-        let url = 'http://localhost:8080/fireEngines/'+id;
+        let url = 'https://localhost:8080/fireEngines/'+id;
         let headers = new HttpHeaders().set('Accept', 'application/json');
         return this.http.delete<FireEngine>(url, { headers });
     }

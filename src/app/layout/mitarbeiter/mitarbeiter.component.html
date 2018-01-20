@@ -22,6 +22,7 @@
                     <th>Titel</th>
                     <th>Name</th>
                     <th>Geburtsdatum</th>
+                    <th>Adresse</th>
                     <th>Dienstgrad</th>
                     <th>Feuerwehr</th>
                     <th>Status</th>
@@ -31,8 +32,10 @@
                 <tr *ngFor="let f of fireFighters">
                     <td>{{f.id}}</td>
                     <td>{{f.gender}}</td>
-                    <td>{{f.title}}</td><td>{{f.surname}} {{f.name}}</td>
+                    <td>{{f.title}}</td>
+                    <td>{{f.surname}} {{f.name}}</td>
                     <td>{{f.dayOfBirth}}</td>
+                    <td>{{f.streetName}}, {{f.postalCode}} {{f.postTown}} </td>
                     <td>{{f.rank.abbreviation}}</td>
                     <td>{{f.fireBrigade.name}}</td>
                     <td>{{f.fireFighterStatus.description}}</td>
