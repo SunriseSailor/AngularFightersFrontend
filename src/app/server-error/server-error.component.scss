@@ -1,0 +1,81 @@
+.plain.error-page-wrapper .head-line {
+    transition: color .2s linear;
+    font-size: 50px;
+    line-height: 60px;
+    color: #dddddd;
+    letter-spacing: -1px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+.plain.error-page-wrapper .subheader {
+    transition: color .2s linear;
+    font-size: 38px;
+    line-height: 46px;
+    color: #dddddd;
+    text-align: center;
+}
+.plain.error-page-wrapper hr {
+    height: 1px;
+    background-color: rgba(255,255,255,.2);
+    border: none;
+    width: 250px;
+    margin: 35px 0;
+    margin: auto;
+}
+.plain.error-page-wrapper .context {
+    transition: color .2s linear;
+    font-size: 20px;
+    line-height: 27px;
+    color: #dddddd;
+}
+.plain.error-page-wrapper .context p {
+    margin: 0;
+    text-align: center;
+}
+
+
+.plain.error-page-wrapper .buttons-container a {
+    transition: color .2s linear, border-color .2s linear;
+    font-size: 18px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #ededed;
+    border: 2px solid white;
+    border-radius: 99px;
+    padding: 8px 30px 9px;
+    display: inline-block;
+}
+
+html, body {
+    background: url("../fire.jpg");
+    height: 100vh !important;
+    background-size: cover;
+    text-align: center;
+}
+.primary-text-color {
+    color: #dddddd !important;
+}
+.secondary-text-color {
+    color: rgba(255, 255, 255, 1);
+}
+.border-button {
+    color: #dddddd !important;
+    border-color: #dddddd !important;
+}
+.button {
+    color: #dddddd !important;
+
+}
+.shadow {
+    box-shadow: 0 0 60px #000000;
+}
+.content-container {
+    padding-top: 10%;
+}
+buttons-container{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+

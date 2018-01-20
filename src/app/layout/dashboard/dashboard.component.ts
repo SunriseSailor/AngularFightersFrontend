@@ -15,7 +15,7 @@ export class DashboardComponent implements OnInit {
         this.sliders.push(
             {
                 imagePath: 'assets/images/slider1.jpg',
-                label: 'Feuerwehr Feldbach',
+                label: 'Feuerwehr',
                 text:
                     'Unsere Freizeit für Ihre Sicherheit!'
             },

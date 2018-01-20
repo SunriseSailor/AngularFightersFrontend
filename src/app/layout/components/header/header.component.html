@@ -26,7 +26,7 @@
                     RTL/LTR
                 </a>
             </li> &nbsp; -->
-            <!--
+
             <li class="nav-item dropdown" ngbDropdown>
                 <a class="nav-link" href="javascript:void(0)" ngbDropdownToggle>
                     <i class="fa fa-envelope"></i> <b class="caret"></b><span class="sr-only">(current)</span>
@@ -66,69 +66,68 @@
                     </li>
                 </ul>
             </li>
-            -->
             <!--
-            <li class="nav-item dropdown" ngbDropdown>
-                <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
-                    <i class="fa fa-bell"></i> <b class="caret"></b><span class="sr-only">(current)</span>
-                </a>
+                        <li class="nav-item dropdown" ngbDropdown>
+                            <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
+                                <i class="fa fa-bell"></i> <b class="caret"></b><span class="sr-only">(current)</span>
+                            </a>
 
-                <div class="dropdown-menu-right" ngbDropdownMenu>
-                    <a href="javascript:void(0)" class="dropdown-item">
-                        {{ 'Pending Task' | translate }} <span class="badge badge-info">6</span>
-                    </a>
-                    <a href="javascript:void(0)" class="dropdown-item">
-                        {{ 'In queue' | translate }} <span class="badge badge-info"> 13</span>
-                    </a>
-                    <a href="javascript:void(0)" class="dropdown-item">
-                        {{ 'Mail' | translate }} <span class="badge badge-info"> 45</span>
-                    </a>
-                    <li class="dropdown-divider"></li>
-                    <a href="javascript:void(0)" class="dropdown-item">
-                        {{ 'View All' | translate }}
-                    </a>
-                </div>
+                            <div class="dropdown-menu-right" ngbDropdownMenu>
+                                <a href="javascript:void(0)" class="dropdown-item">
+                                    {{ 'Pending Task' | translate }} <span class="badge badge-info">6</span>
+                                </a>
+                                <a href="javascript:void(0)" class="dropdown-item">
+                                    {{ 'In queue' | translate }} <span class="badge badge-info"> 13</span>
+                                </a>
+                                <a href="javascript:void(0)" class="dropdown-item">
+                                    {{ 'Mail' | translate }} <span class="badge badge-info"> 45</span>
+                                </a>
+                                <li class="dropdown-divider"></li>
+                                <a href="javascript:void(0)" class="dropdown-item">
+                                    {{ 'View All' | translate }}
+                                </a>
+                            </div>
 
-            </li> -->
+                        </li>
 
-            <!--
-            <li class="nav-item dropdown" ngbDropdown>
-                <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
-                    <i class="fa fa-language"></i> {{ 'Language' | translate }} <b class="caret"></b>
-                </a>
-                <div class="dropdown-menu-right" ngbDropdownMenu>
-                    <a class="dropdown-item" href="javascript:void(0)" (click)="changeLang('en')">
-                        {{ 'English' | translate }}
-                    </a>
-                    <a class="dropdown-item" href="javascript:void(0)" (click)="changeLang('de')">
-                        {{ 'German' | translate }}
-                    </a>
-                </div>
-            </li>
-            <li class="nav-item dropdown" ngbDropdown>
-                <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
-                    <i class="fa fa-user"></i>Admin<b class="caret"></b>
-                </a>
-                <div class="dropdown-menu-right" ngbDropdownMenu>
-                    <a class="dropdown-item" href="javascript:void(0)">
-                        <i class="fa fa-fw fa-user"></i> {{ 'Profile' | translate }}
-                    </a>
-                    <a class="dropdown-item" href="javascript:void(0)">
-                        <i class="fa fa-fw fa-envelope"></i> {{ 'Inbox' | translate }}
-                    </a>
-                    <a class="dropdown-item" href="javascript:void(0)">
-                        <i class="fa fa-fw fa-gear"></i> {{ 'Settings' | translate }}
-                    </a>
-                    <a class="dropdown-item" [routerLink]="['/login']" (click)="onLoggedout()">
-                        <i class="fa fa-fw fa-power-off"></i> {{ 'Log Out' | translate }}
-                    </a>
-                </div>
-            </li>
             -->
+                        <li class="nav-item dropdown" ngbDropdown>
+                            <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
+                                <i class="fa fa-language"></i> {{ 'Language' | translate }} <b class="caret"></b>
+                            </a>
+                            <div class="dropdown-menu-right" ngbDropdownMenu>
+                                <a class="dropdown-item" href="javascript:void(0)" (click)="changeLang('en')">
+                                    {{ 'English' | translate }}
+                                </a>
+                                <a class="dropdown-item" href="javascript:void(0)" (click)="changeLang('de')">
+                                    {{ 'German' | translate }}
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown" ngbDropdown>
+                            <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
+                                <i class="fa fa-user"></i>Admin<b class="caret"></b>
+                            </a>
+                            <div class="dropdown-menu-right" ngbDropdownMenu>
+                                <a class="dropdown-item" href="javascript:void(0)">
+                                    <i class="fa fa-fw fa-user"></i> {{ 'Profile' | translate }}
+                                </a>
+                                <a class="dropdown-item" href="javascript:void(0)">
+                                    <i class="fa fa-fw fa-envelope"></i> {{ 'Inbox' | translate }}
+                                </a>
+                                <a class="dropdown-item" href="javascript:void(0)">
+                                    <i class="fa fa-fw fa-gear"></i> {{ 'Settings' | translate }}
+                                </a>
+                                <a class="dropdown-item" [routerLink]="['/login']" (click)="onLoggedout()">
+                                    <i class="fa fa-fw fa-power-off"></i> {{ 'Log Out' | translate }}
+                                </a>
+                            </div>
+                        </li>
 
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="{{ 'Search' | translate }}" >
-            </form>
-        </ul>
-    </div>
-</nav>
+
+                        <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="text" placeholder="{{ 'Search' | translate }}" >
+                        </form>
+                    </ul>
+                </div>
+            </nav>

@@ -38,5 +38,47 @@
     "Vehicle Names": "Vehicle Names",
     "Volunteer Firebrigade": "Volunteer Firebrigade",
     "Overview": "Overview",
-    "Statistics": "Statistics"
+    "Statistics": "Statistics",
+    "Abbreviation": "Abbreviation",
+    "ID": "ID",
+    "Gender": "Gender",
+    "Title": "Title",
+    "Lastname": "Lastname",
+    "Firstname": "Firstname",
+    "Full Name": "Full Name",
+    "Select": "Select",
+    "New Employee": "New Employee",
+    "New Rank": "New Rank",
+    "Description": "Description",
+    "New Firebrigade": "New Firebrigade",
+    "Name": "Name",
+    "Street": "Street",
+    "Postalcode": "Postalcode",
+    "Town": "Town",
+    "New Firefighter Status": "New Firefighter Status",
+    "New Vehicle": "New Vehicle",
+    "Model": "Model",
+    "License Plate": "License Plate",
+    "Performance": "Performance",
+    "Build Year": "Build Year",
+    "Active": "Active",
+    "New Vehicle Name": "New Vehicle Name",
+    "Operating Life": "Operating Life",
+    "Delete": "Delete",
+    "Edit": "Edit",
+    "Back to the overview": "Back to the overview",
+    "Firebrigade Feldbach": "Firebrigade Feldbach",
+    "Our free time for your security": "Our free time for your security",
+    "We are looking for someone like you!": "We are looking for someone like you!",
+    "No matter where you come from!": "No matter where you come from!",
+    "Emergency Number": "Emergency Number",
+    "WHERE did something happen?": "Where did something happen?",
+    "WHAT happened?": "What happened?",
+    "HOW many are injured?": "How many are injured?",
+    "WHO is calling?": "Who is calling?"
+
+
+
+
+
 }
