@@ -12,9 +12,12 @@
             </div>
             <div class="form-group">
                 <label>Modell:</label>
-                <input [(ngModel)]="fireEngine.model" name="model" class="form-control" required minlength="3">
+                <input [(ngModel)]="fireEngine.model" name="model" class="form-control" required minlength="3" maxlength="25">
                 <div class="text-danger" *ngIf="form?.controls['model']?.hasError('minlength')">
                     Bitte geben Sie mindestens drei Zeichen ein!
+                </div>
+                <div class="text-danger" *ngIf="form?.controls['model']?.hasError('maxlength')">
+                    Bitte geben Sie höchstens 25 Zeichen ein!
                 </div>
                 <div class="text-danger" *ngIf="form?.controls['model']?.hasError('required')">
                     Bitte füllen Sie dieses Feld aus!

@@ -13,9 +13,12 @@
 
             <div class="form-group">
                 <label>Name:</label>
-                <input [(ngModel)]="fireBrigade.name" name="name" class="form-control" required minlength="3">
+                <input [(ngModel)]="fireBrigade.name" name="name" class="form-control" required minlength="3" maxlength="25">
                 <div class="text-danger" *ngIf="form?.controls['name']?.hasError('minlength')">
                     Bitte geben Sie mindestens drei Zeichen ein!
+                </div>
+                <div class="text-danger" *ngIf="form?.controls['name']?.hasError('maxlength')">
+                    Bitte geben Sie höchstens 25 Zeichen ein!
                 </div>
                 <div class="text-danger" *ngIf="form?.controls['name']?.hasError('required')">
                     Bitte füllen Sie dieses Feld aus!
@@ -24,9 +27,12 @@
 
             <div class="form-group">
                 <label>Ort:</label>
-                <input [(ngModel)]="fireBrigade.postTown" name="postTown" class="form-control" required minlength="4">
+                <input [(ngModel)]="fireBrigade.postTown" name="postTown" class="form-control" required minlength="4" maxlength="25">
                 <div class="text-danger" *ngIf="form?.controls['postTown']?.hasError('minlength')">
                     Bitte geben Sie mindestens drei Zeichen ein!
+                </div>
+                <div class="text-danger" *ngIf="form?.controls['postTown']?.hasError('maxlength')">
+                    Bitte geben Sie höchstens 25 Zeichen ein!
                 </div>
                 <div class="text-danger" *ngIf="form?.controls['postTown']?.hasError('required')">
                     Bitte füllen Sie dieses Feld aus!
@@ -37,21 +43,27 @@
                 <label>PLZ:</label>
                 <input [(ngModel)]="fireBrigade.postalCode" name="postalCode" class="form-control" pattern="^(\d*)$" required minlength="4" maxlength="4">
                 <div class="text-danger" *ngIf="form?.controls['postalCode']?.hasError('minlength')">
-                    Bitte geben Sie eine korrekte PLZ ein!
+                    Bitte geben Sie eine korrekte PLZ ein! Beispiel: 8020
                 </div>
                 <div class="text-danger" *ngIf="form?.controls['postalCode']?.hasError('maxlength')">
-                    Bitte geben Sie eine korrekte PLZ ein!
+                    Bitte geben Sie eine korrekte PLZ ein! Beispiel: 8020
                 </div>
                 <div class="text-danger" *ngIf="form?.controls['postalCode']?.hasError('required')">
-                    Bitte füllen Sie dieses Feld aus!
+                    Bitte füllen Sie dieses Feld aus! Beispiel: 8020
+                </div>
+                <div class="text-danger" *ngIf="form?.controls['postalCode']?.hasError('pattern')">
+                    Bitte füllen Sie dieses Feld aus! Beispiel: 8020
                 </div>
             </div>
 
             <div class="form-group">
                 <label>Straße:</label>
-                <input [(ngModel)]="fireBrigade.streetName" name="streetName" class="form-control" required minlength="3">
+                <input [(ngModel)]="fireBrigade.streetName" name="streetName" class="form-control" required minlength="3" maxlength="25">
                 <div class="text-danger" *ngIf="form?.controls['streetName']?.hasError('minlength')">
                     Bitte geben Sie mindestens drei Zeichen ein!
+                </div>
+                <div class="text-danger" *ngIf="form?.controls['streetName']?.hasError('maxlength')">
+                    Bitte geben Sie höchstens 25 Zeichen ein!
                 </div>
                 <div class="text-danger" *ngIf="form?.controls['streetName']?.hasError('required')">
                     Bitte füllen Sie dieses Feld aus!

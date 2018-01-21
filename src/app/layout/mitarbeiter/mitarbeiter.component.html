@@ -1,5 +1,5 @@
 <div [@routerTransition]>
-    <h1>Mitarbeiter | <a [routerLink]="['/mitarbeiter/mitarbeiter-edit']">Neuen Mitarbeiter hinzufügen</a></h1><br><br>
+    <h1>Mitglieder | <a [routerLink]="['/mitarbeiter/mitarbeiter-edit']">Neues Mitglied hinzufügen</a></h1><br><br>
     <div class="row">
         <div class="col-md-12">
             <form class="form-group">
@@ -31,7 +31,7 @@
                 </thead>
                 <tr *ngFor="let f of fireFighters">
                     <td>{{f.id}}</td>
-                    <td>{{f.gender}}</td>
+                    <td>{{f.gender}} | mitarbeiterAnrede:f.gender</td>
                     <td>{{f.title}}</td>
                     <td>{{f.surname}} {{f.name}}</td>
                     <td>{{f.dayOfBirth}}</td>
