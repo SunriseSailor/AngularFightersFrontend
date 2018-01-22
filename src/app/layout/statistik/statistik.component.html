@@ -1,23 +1,26 @@
 <div [@routerTransition]>
-    <h1>Statistiken | </h1><br><br>
+    <h1>Statistiken</h1><br><br>
     <div class="row">
         <div class="col col-sm-6">
             <div class="card mb-3">
-                <div class="card-header">
-                    Übersicht der Mitarbeiter
+                <div class="card-header" style="text-align: center">
+                    Übersicht der Mitglieder Status
                 </div>
                 <div class="card-body">
-                    <canvas baseChart height="150px" [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+                    <canvas baseChart height="150px" [data]="[this.statusNumberActive, this.statusNumberYouth, this.statusNumberReserve]" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)">
                     </canvas>
                 </div>
             </div>
         </div>
         <div class="col col-sm-6">
-            <div class="card-header">
-                Männliche und weibliche MitarbeiterInnen
+            <div class="card-header" style="text-align: center">
+                männliche und weibliche Mitglieder
             </div>
             <div class="card-body">
-                <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+                <canvas baseChart [datasets]="[
+                { data: [this.genderNumberW], label: 'weiblich' },
+                { data: [this.genderNumberM], label: 'männlich' }]"
+                        [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)">
                 </canvas>
             </div>
         </div>
@@ -26,8 +29,8 @@
         <h1>Fahrzeuge</h1>
         <h5>
             <br>
-            Unter dem Menüpunkt "Fahrzeuge" finden Sie weitere Informationen über unsere Fahrzeuge. <br>
-            Dabei können Sie nach den einzelnen Feuerwehren filtern.<br>
+            Unter dem Menüpunkt "Fahrzeuge" finden Sie weitere Informationen über unsere Fahrzeuge.<br>
+            Dort können Sie nach den einzelnen Feuerwehren filtern.<br>
             Wenn Sie den Menüpunkt "KFZ-Bezeichnungen" besuchen, erfahren Sie mehr über die einzelnen<br>
             Fahrzeugarten und deren Nutzungsdauer.
             <br><br>
@@ -37,6 +40,7 @@
             <a href="javascript:void(0)" class="btn btn-primary btn-lg" role="button" [routerLink]="['/fahrzeugbezeichnung']">Mehr zu den Fahrzeugbezeichnungen »</a>
         </p>
     </div>
+    <!--
     <div class="row">
         <div class="col col-sm-12">
             <div class="card mb-3">
@@ -49,5 +53,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>

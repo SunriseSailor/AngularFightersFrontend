@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
+import { StatistikService } from './statistik.service';
 
 @Component({
     selector: 'app-statistik',
@@ -7,16 +8,31 @@ import { routerTransition } from '../../router.animations';
     styleUrls: ['./statistik.component.scss'],
     animations: [routerTransition()]
 })
+
 export class StatistikComponent implements OnInit {
 
+    genderNumberM: number;
+    genderNumberW: number;
 
-//pie-chart
+    statusNumberActive: number;
+    statusNumberYouth: number;
+    statusNumberReserve: number;
+
+    errors: string;
+
+    // pie-chart
     public pieChartLabels: string[] = [
-        'Reserve',
         'Aktiv',
-        'Jugend'
+        'Jugend',
+        'Reserve'
     ];
-    public pieChartData: number[] = [300, 500, 100];
+
+    public pieChartData: number[] = [
+        this.statusNumberActive,
+        this.statusNumberYouth,
+        this.statusNumberReserve
+    ];
+
     public pieChartType: string = 'pie';
 
     // bar chart
@@ -24,28 +40,28 @@ export class StatistikComponent implements OnInit {
         scaleShowVerticalLines: false,
         responsive: true
     };
+
     public barChartLabels: string[] = [
-        'Feldbach',
-        'Graz',
-        'Wolfsberg',
-        'Gniebing',
-        'Paldau'
+        'Weiblich',
+        'Männlich'
     ];
+
     public barChartType: string = 'bar';
     public barChartLegend: boolean = true;
 
     public barChartData: any[] = [
-        { data: [28, 48, 40, 19, 56], label: 'weiblich' },
-        { data: [65, 59, 80, 81, 86], label: 'männlich' }
+        {data: [this.genderNumberW], label: 'weiblich'},
+        {data: [this.genderNumberM], label: 'männlich'}
     ];
 
+/*
     // lineChart
     public lineChartData: Array<any> = [
-        { data: [0, 0, 1, 14, 25, 7, 18, 6, 44, 35, 2, 8, 14, 0, 0, 0], label: 'Feldbach' },
-        //{ data: [40, 35, 30, 25, 20, 15, 5], label: 'Graz' },
-        //{ data: [30, 35, 40, 45, 50, 55, 8], label: 'Wolfsberg' },
-        //{ data: [60, 55, 50, 45, 40, 35, 5], label: 'Gniebing' },
-        //{ data: [70, 80, 70, 80, 70, 80, 10], label: 'Paldau' }
+        {data: [0, 0, 1, 14, 25, 7, 18, 6, 44, 35, 2, 8, 14, 0, 0, 0], label: 'Feldbach'},
+        // { data: [40, 35, 30, 25, 20, 15, 5], label: 'Graz' },
+        // { data: [30, 35, 40, 45, 50, 55, 8], label: 'Wolfsberg' },
+        // { data: [60, 55, 50, 45, 40, 35, 5], label: 'Gniebing' },
+        // { data: [70, 80, 70, 80, 70, 80, 10], label: 'Paldau' }
     ];
     public lineChartLabels: Array<any> = [
         '1940-1945',
@@ -69,24 +85,6 @@ export class StatistikComponent implements OnInit {
         responsive: true
     };
     public lineChartColors: Array<any> = [
-        /*{
-            // grey
-            backgroundColor: 'rgba(148,159,177,0.2)',
-            borderColor: 'rgba(148,159,177,1)',
-            pointBackgroundColor: 'rgba(148,159,177,1)',
-            pointBorderColor: '#fff',
-            pointHoverBackgroundColor: '#fff',
-            pointHoverBorderColor: 'rgba(148,159,177,0.8)'
-        },*/
-        {
-            // dark grey
-            backgroundColor: 'rgba(77,83,96,0.2)',
-            borderColor: 'rgba(77,83,96,1)',
-            pointBackgroundColor: 'rgba(77,83,96,1)',
-            pointBorderColor: '#fff',
-            pointHoverBackgroundColor: '#fff',
-            pointHoverBorderColor: 'rgba(77,83,96,1)'
-        }/*,
         {
             // grey
             backgroundColor: 'rgba(148,159,177,0.2)',
@@ -113,13 +111,72 @@ export class StatistikComponent implements OnInit {
             pointBorderColor: '#fff',
             pointHoverBackgroundColor: '#fff',
             pointHoverBorderColor: 'rgba(148,159,177,0.8)'
-        },*/
+        },
+        {
+            // dark grey
+            backgroundColor: 'rgba(77,83,96,0.2)',
+            borderColor: 'rgba(77,83,96,1)',
+            pointBackgroundColor: 'rgba(77,83,96,1)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgba(77,83,96,1)'
+        },
+        {
+            // grey
+            backgroundColor: 'rgba(148,159,177,0.2)',
+            borderColor: 'rgba(148,159,177,1)',
+            pointBackgroundColor: 'rgba(148,159,177,1)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+        },
     ];
+
     public lineChartLegend: boolean = true;
     public lineChartType: string = 'line';
+*/
 
+    constructor(private statistikService: StatistikService) {
+    }
 
-    constructor() {}
+    ngOnInit() {
+        this.statistikService.countByGenderM().subscribe(
+            numberM => {
+                this.genderNumberM = numberM;
+                this.statistikService.countByGenderW().subscribe(
+                    numberW => {
+                        this.genderNumberW = numberW;
+                        this.errors = '';
+                    },
+                    err => {
+                        this.errors = 'Fehler beim Laden';
+                    });
+            },
+            err => {
+                this.errors = 'Fehler beim Laden';
+            });
 
-    ngOnInit() {}
+        this.statistikService.countByStatusActive().subscribe(
+            statusActive => {
+                this.statusNumberActive = statusActive;
+                this.statistikService.countByStatusYouth().subscribe(
+                    statusYouth => {
+                        this.statusNumberYouth = statusYouth;
+                        this.statistikService.countByStatusReserve().subscribe(
+                            statusReserve => {
+                                this.statusNumberReserve = statusReserve;
+                                this.errors = '';
+                            },
+                            err => {
+                                this.errors = 'Fehler beim Laden';
+                            });
+                    },
+                    err => {
+                        this.errors = 'Fehler beim Laden';
+                    }),
+                    err => {
+                        this.errors = 'Fehler beim Laden';
+                    }
+            });
+    }
 }

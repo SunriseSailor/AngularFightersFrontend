@@ -17,6 +17,7 @@ import {FireFighterStatusService} from './layout/status/status.service';
 import {RankService} from './layout/dienstgrade/dienstgrade.service';
 import {OAuthModule } from 'angular-oauth2-oidc';
 import {AppService} from './app.service';
+import {StatistikService} from './layout/statistik/statistik.service';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -48,13 +49,10 @@ export function createTranslateLoader(http: HttpClient) {
 
             }
         })
-
-
-
     ],
     declarations: [AppComponent],
-    providers: [AuthGuard, AppService, RankService, FireEngineAbbreviationService,
-        FireEngineService, FireBrigadeService, FireFighterService,  FireFighterStatusService],
+    providers: [AuthGuard, AppService, RankService, FireEngineAbbreviationService, FireEngineService,
+        FireBrigadeService, FireFighterService, FireFighterStatusService, StatistikService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

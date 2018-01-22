@@ -59,11 +59,11 @@
                 <tr>
                     <th>ID</th>
                     <th>Geschlecht</th>
-                    <th>Titel</th>
+                    <th style="padding-left: 3%">Titel</th>
                     <th>Name</th>
                     <th>Geburtsdatum</th>
                     <th>Adresse</th>
-                    <th>Dienstgrad</th>
+                    <th style="padding-right: 2em">Dienstgrad</th>
                     <th>Feuerwehr</th>
                     <th>Status</th>
                     <th></th>
@@ -71,12 +71,12 @@
                 </thead>
                 <tr *ngFor="let f of fireFighters">
                     <td>{{f.id}}</td>
-                    <td>{{f.gender | mitarbeiterAnrede:f.gender}}</td>
-                    <td>{{f.title}}</td>
+                    <td style="text-align: center">{{f.gender | mitarbeiterAnrede:f.gender}}</td>
+                    <td style="text-align: center">{{f.title}}</td>
                     <td>{{f.surname}} {{f.name}}</td>
                     <td>{{f.dayOfBirth}}</td>
                     <td>{{f.streetName}}, {{f.postalCode}} {{f.postTown}} </td>
-                    <td>{{f.rank.abbreviation}}</td>
+                    <td style="text-align: center; padding-right: 2em">{{f.rank.abbreviation}}</td>
                     <td>{{f.fireBrigade.name}}</td>
                     <td>{{f.fireFighterStatus.description}}</td>
                     <td>

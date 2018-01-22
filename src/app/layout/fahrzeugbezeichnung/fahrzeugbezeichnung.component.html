@@ -7,7 +7,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Abkürzung</th>
-                    <th>Mindestnutzung</th>
+                    <th style="padding-right: 4em">Mindestnutzung</th>
                     <th>Beschreibung</th>
                     <th></th>
                 </tr>
@@ -15,7 +15,7 @@
                 <tr *ngFor="let b of fireEngineAbbreviations">
                     <td>{{b.id}}</td>
                     <td>{{b.abbreviation}}</td>
-                    <td>{{b.operatingLife}}</td>
+                    <td style="padding-right: 2em">{{b.operatingLife}} Jahre</td>
                     <td>{{b.description}}</td>
                     <td><a class="btn btn-default" (click)="select(b)" [routerLink]="['/fahrzeugbezeichnung/fahrzeugbezeichnung-detail', b.id ]">Auswählen</a></td>
                 </tr>
