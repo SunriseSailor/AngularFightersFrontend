@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JwksValidationHandler, OAuthService } from 'angular-oauth2-oidc';
-import {authConfig} from "./shared/guard/auth.config";
+import {authConfig} from './shared/guard/auth.config';
 
 @Component({
     selector: 'app-root',
@@ -11,13 +11,9 @@ export class AppComponent implements OnInit {
   constructor(private oauthService: OAuthService) {
 
       this.configureWithNewConfigApi();
-
           }
-
-
-
       private configureWithNewConfigApi() {
-          this.oauthService.configure(authConfig)
+          this.oauthService.configure(authConfig);
           this.oauthService.tokenValidationHandler = new JwksValidationHandler();
           this.oauthService.loadDiscoveryDocumentAndTryLogin();
 
