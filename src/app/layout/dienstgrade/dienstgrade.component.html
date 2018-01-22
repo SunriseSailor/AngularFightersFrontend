@@ -2,6 +2,31 @@
     <h1>Dienstgrade | <a [routerLink]="['/dienstgrade/dienstgrade-edit']">Neuen Dienstgrad hinzufügen</a></h1><br><br>
     <div class="row">
         <div class="col-md-12">
+            <h2>Filtern/Suchen nach:</h2>
+            <form class="form-group">
+                <button class="btn btn-default" (click)="showForm('abbreviation')">Abkürzung</button>
+                <button class="btn btn-default" (click)="showForm('description')">Beschreibung</button>
+            </form>
+            <br>
+            <form class="form-group" *ngIf="filterAbbreviation">
+            <div class="form-group">
+                <label>Suchen nach Abkürzung:</label>
+                <input type="text" class="form-control" id="abbreviation" [(ngModel)]="rank" name="rankAbbreviation">
+            </div>
+            <button class="btn btn-default" (click)="filterByRankAbbreviation(rank)">Filtern!</button>
+            <button *ngIf="filtered" class="btn btn-default" (click)="showAllRanks()">Filter aufheben</button>
+        </form>
+            <form class="form-group" *ngIf="filterDescription">
+                <div class="form-group">
+                    <label>Suchen nach Beschreibung:</label>
+                    <input type="text" class="form-control" id="description" [(ngModel)]="rank" name="rankDescription">
+                </div>
+                <button class="btn btn-default" (click)="filterByRankDescription(rank)">Filtern!</button>
+                <button *ngIf="filtered" class="btn btn-default" (click)="showAllRanks()">Filter aufheben</button>
+            </form>
+
+
+<br>
             <table class="table table-condensed" *ngIf="ranks.length > 0">
                 <thead>
                 <tr>

@@ -36,4 +36,20 @@ export class RankService {
         let headers = new HttpHeaders().set('Accept', 'application/json');
         return this.http.delete<Rank>(url, { headers });
     }
+    findByRankAbbreviation(rankAbbreviation: string): Promise<Rank[]> {
+        const url = 'https://localhost:8080/ranks/search/findByAbbreviationContaining?projection=all';
+        const headers = new HttpHeaders()
+            .set('Accept', 'application/json');
+        let params = new HttpParams() .set('abbreviation', rankAbbreviation);
+        return this.http.get<Array<Rank>>(url, {headers,params})
+            .toPromise().then(ranks => ranks['_embedded']['ranks'])
+    }
+    findByRankDescription(rankDescription: string): Promise<Rank[]> {
+        const url = 'https://localhost:8080/ranks/search/findByDescriptionContaining?projection=all';
+        const headers = new HttpHeaders()
+            .set('Accept', 'application/json');
+        let params = new HttpParams() .set('description', rankDescription);
+        return this.http.get<Array<Rank>>(url, {headers,params})
+            .toPromise().then(ranks => ranks['_embedded']['ranks'])
+    }
 }
