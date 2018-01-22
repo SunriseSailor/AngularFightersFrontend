@@ -17,7 +17,8 @@ import {FireFighterStatusService} from "./layout/status/status.service";
 import {RankService} from "./layout/dienstgrade/dienstgrade.service";
 import {OAuthModule } from 'angular-oauth2-oidc';
 import {AppService} from "./app.service";
-import {MitarbeiterAnredePipe} from './mitarbeiter/mitarbeiterAnrede.pipe'
+//import {MitarbeiterAnredePipe} from "./layout/mitarbeiter/mitarbeiterAnrede.pipe";
+
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -33,7 +34,7 @@ export function createTranslateLoader(http: HttpClient) {
         FormsModule,
         BrowserAnimationsModule,
         HttpClientModule,
-        MitarbeiterAnredePipe,
+//        MitarbeiterAnredePipe,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
