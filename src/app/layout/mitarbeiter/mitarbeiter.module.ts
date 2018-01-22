@@ -5,9 +5,10 @@ import { MitarbeiterComponent } from './mitarbeiter.component';
 import { MitarbeiterDetailComponent } from './mitarbeiter-detail/mitarbeiter-detail.component';
 import { MitarbeiterEditComponent } from './mitarbeiter-edit/mitarbeiter-edit.component';
 import { FormsModule } from '@angular/forms';
+import {MitarbeiterAnredePipe} from './mitarbeiterAnrede.pipe';
 
 @NgModule({
     imports: [CommonModule, MitarbeiterRoutingModule, FormsModule],
-    declarations: [MitarbeiterComponent, MitarbeiterDetailComponent, MitarbeiterEditComponent]
+    declarations: [MitarbeiterComponent, MitarbeiterDetailComponent, MitarbeiterEditComponent, MitarbeiterAnredePipe]
 })
 export class MitarbeiterModule {}

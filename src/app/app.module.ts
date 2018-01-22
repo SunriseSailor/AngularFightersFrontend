@@ -9,16 +9,14 @@ import {AppRoutingModule } from './app-routing.module';
 import {AppComponent } from './app.component';
 import {AuthGuard } from './shared';
 import {FormsModule} from '@angular/forms';
-import {FireEngineService} from "./layout/fahrzeuge/fahrzeuge.service";
-import {FireBrigadeService} from "./layout/feuerwehr/feuerwehr.service";
-import {FireFighterService} from "./layout/mitarbeiter/mitarbeiter.service";
-import {FireEngineAbbreviationService} from "./layout/fahrzeugbezeichnung/fahrzeugbezeichnung.service";
-import {FireFighterStatusService} from "./layout/status/status.service";
-import {RankService} from "./layout/dienstgrade/dienstgrade.service";
+import {FireEngineService} from './layout/fahrzeuge/fahrzeuge.service';
+import {FireBrigadeService} from './layout/feuerwehr/feuerwehr.service';
+import {FireFighterService} from './layout/mitarbeiter/mitarbeiter.service';
+import {FireEngineAbbreviationService} from './layout/fahrzeugbezeichnung/fahrzeugbezeichnung.service';
+import {FireFighterStatusService} from './layout/status/status.service';
+import {RankService} from './layout/dienstgrade/dienstgrade.service';
 import {OAuthModule } from 'angular-oauth2-oidc';
-import {AppService} from "./app.service";
-//import {MitarbeiterAnredePipe} from "./layout/mitarbeiter/mitarbeiterAnrede.pipe";
-
+import {AppService} from './app.service';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -34,7 +32,6 @@ export function createTranslateLoader(http: HttpClient) {
         FormsModule,
         BrowserAnimationsModule,
         HttpClientModule,
-//        MitarbeiterAnredePipe,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
@@ -56,7 +53,8 @@ export function createTranslateLoader(http: HttpClient) {
 
     ],
     declarations: [AppComponent],
-    providers: [AuthGuard, AppService, RankService, FireEngineAbbreviationService, FireEngineService, FireBrigadeService, FireFighterService,  FireFighterStatusService],
+    providers: [AuthGuard, AppService, RankService, FireEngineAbbreviationService,
+        FireEngineService, FireBrigadeService, FireFighterService,  FireFighterStatusService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

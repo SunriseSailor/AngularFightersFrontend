@@ -31,7 +31,7 @@
                 </thead>
                 <tr *ngFor="let f of fireFighters">
                     <td>{{f.id}}</td>
-                    <td>{{f.gender}} | mitarbeiterAnrede:f.gender</td>
+                    <td>{{f.gender | mitarbeiterAnrede:f.gender}}</td>
                     <td>{{f.title}}</td>
                     <td>{{f.surname}} {{f.name}}</td>
                     <td>{{f.dayOfBirth}}</td>
