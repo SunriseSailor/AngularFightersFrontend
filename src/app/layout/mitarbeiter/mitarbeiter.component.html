@@ -2,7 +2,15 @@
     <h1>Mitglieder | <a [routerLink]="['/mitarbeiter/mitarbeiter-edit']">Neues Mitglied hinzufügen</a></h1><br><br>
     <div class="row">
         <div class="col-md-12">
+<h2>Filtern/Suchen nach:</h2>
             <form class="form-group">
+                <button class="btn btn-default" (click)="showForm('fireBrigade')">Feuerwehr</button>
+                <button class="btn btn-default" (click)="showForm('name')">Vorname</button>
+                <button class="btn btn-default" (click)="showForm('surname')">Nachname</button>
+                <button class="btn btn-default" (click)="showForm('status')">Status</button>
+            </form>
+<br>
+            <form class="form-group" *ngIf="filterFireBrigade">
                 <div class="form-group">
                     <label>Filtern nach Feuerwehr:</label>
                     <select [(ngModel)]="fireBrigadeId" name="fireBrigadeId" class="form-control">
@@ -12,8 +20,40 @@
                 <button class="btn btn-default" (click)="filterByFireBrigade(fireBrigadeId)">Filtern!</button>
                 <button *ngIf="filtered" class="btn btn-default" (click)="showAllFireFighters()">Filter aufheben</button>
             </form>
+
+            <form class="form-group" *ngIf="filterName">
+                <div class="form-group">
+                    <label>Suchen nach Vorname:</label>
+                    <input type="text" class="form-control" id="name" [(ngModel)]="fireFighter" name="fireFighterName">
+                    </div>
+                <button class="btn btn-default" (click)="filterByFireFighterName(fireFighter)">Filtern!</button>
+                <button *ngIf="filtered" class="btn btn-default" (click)="showAllFireFighters()">Filter aufheben</button>
+            </form>
+
+            <form class="form-group" *ngIf="filterSurname">
+                <div class="form-group">
+                    <label>Suchen nach Nachname:</label>
+                    <input type="text" class="form-control" id="surname" [(ngModel)]="fireFighter" name="fireFighterSurname">
+                </div>
+                <button class="btn btn-default" (click)="filterByFireFighterSurname(fireFighter)">Filtern!</button>
+                <button *ngIf="filtered" class="btn btn-default" (click)="showAllFireFighters()">Filter aufheben</button>
+            </form>
+
+            <form class="form-group" *ngIf="filterStatus">
+                <div class="form-group">
+                    <label>Filtern nach Status:</label>
+                    <select [(ngModel)]="fireFighterStatusId" name="fireFighterStatusId" class="form-control">
+                        <option *ngFor="let f of fireFighterStatuses" [value]="f.id" >{{f.description}}</option>
+                    </select>
+                </div>
+                <button class="btn btn-default" (click)="filterByFireFighterStatus(fireFighterStatusId)">Filtern!</button>
+                <button *ngIf="filtered" class="btn btn-default" (click)="showAllFireFighters()">Filter aufheben</button>
+            </form>
+
         </div>
+
         <div class="col-md-12">
+            <br>
             <table class="table table-condensed" *ngIf="fireFighters.length > 0">
                 <thead>
                 <tr>

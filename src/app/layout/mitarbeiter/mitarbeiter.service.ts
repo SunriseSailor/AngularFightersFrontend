@@ -54,6 +54,35 @@ export class FireFighterService {
             .toPromise().then(fireFighters => fireFighters['_embedded']['fireFighters'])
     }
 
+    findByFireFighterName(fireFighterName: string): Promise<FireFighter[]> {
+        const url = 'https://localhost:8080/fireFighters/search/findByName?projection=all';
+        const headers = new HttpHeaders()
+            .set('Accept', 'application/json');
+        let params = new HttpParams() .set('name', fireFighterName);
+        return this.http.get<Array<FireFighter>>(url, {headers,params})
+            .toPromise().then(fireFighters => fireFighters['_embedded']['fireFighters'])
+    }
+
+    findByFireFighterSurname(fireFighterSurname: string): Promise<FireFighter[]> {
+        const url = 'https://localhost:8080/fireFighters/search/findBySurname?projection=all';
+        const headers = new HttpHeaders()
+            .set('Accept', 'application/json');
+        let params = new HttpParams() .set('surname', fireFighterSurname);
+        return this.http.get<Array<FireFighter>>(url, {headers,params})
+            .toPromise().then(fireFighters => fireFighters['_embedded']['fireFighters'])
+    }
+
+    findByFireFighterStatus(fireFighterStatus: string): Promise<FireFighter[]> {
+        const url = 'https://localhost:8080/fireFighters/search/findByFireFighterStatus_id?projection=all';
+        const headers = new HttpHeaders()
+            .set('Accept', 'application/json');
+        let params = new HttpParams() .set('status', fireFighterStatus);
+        return this.http.get<Array<FireFighter>>(url, {headers,params})
+            .toPromise().then(fireFighters => fireFighters['_embedded']['fireFighters'])
+    }
+
+
+
     createFireFighter(fireFighter: FireFighter): Observable<FireFighter> {
         let url = 'https://localhost:8080/fireFighters';
         let headers = new HttpHeaders().set('Accept', 'application/json').set('Content-Type', 'application/json');
